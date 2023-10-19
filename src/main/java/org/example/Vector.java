@@ -70,6 +70,8 @@ public class Vector {
 
     public Vector divide(double scale)
     {
+        if(scale == 0) return this;
+
         double x = this.getX() / scale;
         double y = this.getY() / scale;
         double z = this.getZ() / scale;

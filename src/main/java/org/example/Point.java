@@ -60,11 +60,14 @@ public class Point {
 
     public Point divide(double scale)
     {
+        if(scale == 0) return this;
+
         double x = this.getX() / scale;
         double y = this.getY() / scale;
         double z = this.getZ() / scale;
 
         return new Point(x,y,z);
+
     }
 
     public Point add(Vector a)
