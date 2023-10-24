@@ -69,4 +69,30 @@ class ColorTest {
 
         assertArrayEquals(expected,actual);
     }
+
+    @Test
+    void testConvenience()
+    {
+        Color cyan = new Color("cyan");
+        Color magenta = new Color("magenta");
+        Color white = new Color("white");
+        Color yellow = new Color("yellow");
+
+        double[] cyanExpected = {0, 1, 1};
+        double[] cyanActual = {cyan.getR(),cyan.getG(), cyan.getB()};
+
+        double[] magentaExpected = {1, 0, 1};
+        double[] magentaActual = {magenta.getR(),magenta.getG(), magenta.getB()};
+
+        double[] whiteExpected = {1, 1, 1};
+        double[] whiteActual = {white.getR(),white.getG(), white.getB()};
+
+        double[] yellowExpected = {1, 1, 0};
+        double[] yellowActual = {yellow.getR(),yellow.getG(), yellow.getB()};
+
+        assertArrayEquals(cyanExpected, cyanActual);
+        assertArrayEquals(magentaExpected, magentaActual);
+        assertArrayEquals(whiteExpected, whiteActual);
+        assertArrayEquals(yellowExpected, yellowActual);
+    }
 }

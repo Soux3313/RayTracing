@@ -171,4 +171,16 @@ And cross(vector2, vector1) = Vector(1, -2, 1)
         assertArrayEquals(expected1, actual1);
         assertArrayEquals(expected2, actual2);
     }
+
+    @Test
+    void equals()
+    {
+        Vector v1 = new Vector(1,2,3);
+        Vector v2 = new Vector(2,3,4);
+        Vector v3 = new Vector(1,1,1);
+        Vector v4 = new Vector(1,1,1);
+
+        assertFalse(v1.equals(v2));
+        assertTrue(v3.equals(v4));
+    }
 }

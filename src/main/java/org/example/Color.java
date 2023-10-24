@@ -20,6 +20,53 @@ public class Color {
         this.b = 0;
     }
 
+    public Color(String identifier)
+    {
+        switch (identifier) {
+            case "black" -> {
+                this.r = 0;
+                this.g = 0;
+                this.b = 0;
+            }
+            case "white" -> {
+                this.r = 1;
+                this.g = 1;
+                this.b = 1;
+            }
+            case "green" -> {
+                this.r = 0;
+                this.g = 1;
+                this.b = 0;
+            }
+            case "yellow" -> {
+                this.r = 1;
+                this.g = 1;
+                this.b = 0;
+            }
+            case "blue" -> {
+                this.r = 0;
+                this.g = 0;
+                this.b = 1;
+            }
+            case "cyan" -> {
+                this.r = 0;
+                this.g = 1;
+                this.b = 1;
+            }
+            case "red" -> {
+                this.r = 1;
+                this.g = 0;
+                this.b = 0;
+            }
+            case "magenta" -> {
+                this.r = 1;
+                this.g = 0;
+                this.b = 1;
+            }
+        }
+
+    }
+
     public double getB() {
         return b;
     }
