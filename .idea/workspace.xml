@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="Color &amp; Tests added">
+    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="added quick color creation (ex.: Color cyan = new Color(&quot;cyan&quot;) for convenience reasons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/ColorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/ColorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +37,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -221,7 +225,9 @@
       <workItem from="1697692303815" duration="136000" />
       <workItem from="1697692502731" duration="6169000" />
       <workItem from="1698070375569" duration="923000" />
-      <workItem from="1698124253292" duration="711000" />
+      <workItem from="1698124253292" duration="1930000" />
+      <workItem from="1698217918745" duration="921000" />
+      <workItem from="1698228092010" duration="682000" />
     </task>
     <task id="LOCAL-00001" summary="Math Library">
       <created>1697617376613</created>
@@ -258,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697726310354</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added quick color creation (ex.: Color cyan = new Color(&quot;cyan&quot;) for convenience reasons">
+      <created>1698125298740</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698125298740</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +282,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="tests" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -280,6 +305,7 @@
     <MESSAGE value="finished Point tests, started Vector tests" />
     <MESSAGE value="finished vector tests" />
     <MESSAGE value="Color &amp; Tests added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Color &amp; Tests added" />
+    <MESSAGE value="added quick color creation (ex.: Color cyan = new Color(&quot;cyan&quot;) for convenience reasons" />
+    <option name="LAST_COMMIT_MESSAGE" value="added quick color creation (ex.: Color cyan = new Color(&quot;cyan&quot;) for convenience reasons" />
   </component>
 </project>
