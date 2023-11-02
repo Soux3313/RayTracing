@@ -13,7 +13,7 @@ class PointAndVectorTest {
         Point p2 = new Point(5,6,7);
 
         double[] expected = {-2,-4,-6};
-        Vector actualPoint = p1.subtract(p2);
+        Vector actualPoint = p1.sub(p2);
         double[] actual = {actualPoint.getX(), actualPoint.getY(), actualPoint.getZ()};
 
         assertArrayEquals(expected, actual);
@@ -39,7 +39,7 @@ class PointAndVectorTest {
         Vector v = new Vector(5,6,7);
 
         double[] expected = {-2,-4,-6};
-        Point actualPoint = p.subtract(v);
+        Point actualPoint = p.sub(v);
         double[] actual = {actualPoint.getX(), actualPoint.getY(), actualPoint.getZ()};
 
         assertArrayEquals(expected, actual);

@@ -26,7 +26,7 @@ Then vector1 + vector2 = Vector(1.0, 1.0, 6.0)*/
     void subtract() {
         Vector v1 = new Vector(3,2,1);
         Vector v2 = new Vector(5,6,7);
-        Vector minusV = v1.subtract(v2);
+        Vector minusV = v1.sub(v2);
 
         double[] expected = {-2, -4, -6};
         double[] actual = {minusV.getX(), minusV.getY(), minusV.getZ()};
@@ -38,7 +38,7 @@ Then vector1 + vector2 = Vector(1.0, 1.0, 6.0)*/
     void subtractZeroVector(){
     Vector v1 = new Vector(0,0,0);
     Vector v2 = new Vector(1,-2,3);
-    Vector minusV = v1.subtract(v2);
+    Vector minusV = v1.sub(v2);
 
     double[] expected = {-1, 2, -3};
     double[] actual = {minusV.getX(), minusV.getY(), minusV.getZ()};
@@ -61,7 +61,7 @@ Then vector1 + vector2 = Vector(1.0, 1.0, 6.0)*/
     @Test
     void multiply() {
         Vector v = new Vector(0.1,0.2,0.3);
-        Vector actualVector = v.multiply(0.3);
+        Vector actualVector = v.mult(0.3);
 
         double[] expected = {0.03,0.06,0.09};
         double[] actual = {actualVector.getX(), actualVector.getY(), actualVector.getZ()};
@@ -72,7 +72,7 @@ Then vector1 + vector2 = Vector(1.0, 1.0, 6.0)*/
     @Test
     void illegalDivisionByZero(){
         Vector v = new Vector(0.1,0.2,0.3);
-        Vector actualVector = v.divide(0);
+        Vector actualVector = v.div(0);
 
         double[] expected = {0.1,0.2,0.3};
         double[] actual = {actualVector.getX(), actualVector.getY(), actualVector.getZ()};
@@ -83,7 +83,7 @@ Then vector1 + vector2 = Vector(1.0, 1.0, 6.0)*/
     @Test
     void divide() {
         Vector v = new Vector(0.1,0.2,0.3);
-        Vector actualVector = v.divide(10);
+        Vector actualVector = v.div(10);
 
         double[] expected = {0.01,0.02,0.03};
         double[] actual = {actualVector.getX(), actualVector.getY(), actualVector.getZ()};
@@ -113,7 +113,7 @@ Then vector1 + vector2 = Vector(1.0, 1.0, 6.0)*/
     @Test
     void normalized() {
         Vector v = new Vector(4,0,0);
-        Vector n = v.normalized();
+        Vector n = v.norm();
 
         double[] expected = {1,0,0};
         double[] actual = {n.getX(), n.getY(), n.getZ()};
@@ -130,7 +130,7 @@ Then magnitude(vector) = 1
     void normalizedMagnitude()
     {
         Vector v = new Vector(1,2,3);
-        Vector n = v.normalized();
+        Vector n = v.norm();
         double mag = n.magnitude();
 
         assertEquals(1,mag);

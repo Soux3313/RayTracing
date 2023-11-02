@@ -41,7 +41,7 @@ public class Vector {
         return new Vector(x,y,z);
     }
 
-    public Vector subtract(Vector a)
+    public Vector sub(Vector a)
     {
         double x = this.getX() - a.getX();
         double y = this.getY() - a.getY();
@@ -59,7 +59,7 @@ public class Vector {
         return new Vector(x,y,z);
     }
 
-    public Vector multiply(double scale)
+    public Vector mult(double scale)
     {
         double x = this.getX() * scale;
         double y = this.getY() * scale;
@@ -68,7 +68,7 @@ public class Vector {
         return new Vector(x,y,z);
     }
 
-    public Vector divide(double scale)
+    public Vector div(double scale)
     {
         if(scale == 0) return this;
 
@@ -86,15 +86,15 @@ public class Vector {
 
     public double magnitude()//√(x² + y² + z²)
     {
-        return Math.sqrt(x*x + y*y + z*z);
+        return Math.sqrt(this.sqrMagnitude());
     }
 
     public double sqrMagnitude()
     {
-        return this.magnitude() * this.magnitude();
+        return x*x + y*y + z*z;
     }
 
-    public Vector normalized()
+    public Vector norm()
     {
         double x = this.getX() / this.magnitude();
         double y = this.getY() / this.magnitude();
@@ -115,6 +115,11 @@ public class Vector {
         double z = this.getX() * a.getY() - this.getY() * a.getX();
 
         return new Vector(x,y,z);
+    }
+
+    public String toString()
+    {
+        return ("V("+this.getX()+","+this.getY()+","+this.getZ()+")");
     }
 
 }

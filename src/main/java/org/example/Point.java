@@ -31,7 +31,7 @@ public class Point {
         return omega;
     }
 
-    public Vector subtract(Point a)
+    public Vector sub(Point a)
     {
         double x = this.getX() - a.getX();
         double y = this.getY() - a.getY();
@@ -40,7 +40,7 @@ public class Point {
         return new Vector(x,y,z);
     }
 
-    public Point subtract(Vector a)
+    public Point sub(Vector a)
     {
         double x = this.getX() - a.getX();
         double y = this.getY() - a.getY();
@@ -49,7 +49,7 @@ public class Point {
         return new Point(x,y,z);
     }
 
-    public Point multiply(double scale)
+    public Point mult(double scale)
     {
         double x = this.getX() * scale;
         double y = this.getY() * scale;
@@ -58,7 +58,7 @@ public class Point {
         return new Point(x,y,z);
     }
 
-    public Point divide(double scale)
+    public Point div(double scale)
     {
         if(scale == 0) return this;
 
@@ -84,7 +84,7 @@ public class Point {
         return a.getX() == x && a.getY() == y && a.getZ() == z;
     }
 
-    public Point minimum(Point a)
+    public Point min(Point a)
     {
         double x;
         double y;
@@ -111,7 +111,7 @@ public class Point {
         return new Point(x,y,z);
     }
 
-    public Point maximum(Point a)
+    public Point max(Point a)
     {
         double x;
         double y;
@@ -136,6 +136,11 @@ public class Point {
         else z = this.getZ();
 
         return new Point(x,y,z);
+    }
+
+    public String toString()
+    {
+        return ("P("+this.getX()+","+this.getY()+","+this.getZ()+")");
     }
 
 }
