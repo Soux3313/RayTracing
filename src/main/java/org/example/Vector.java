@@ -79,9 +79,12 @@ public class Vector {
         return new Vector(x,y,z);
     }
 
-    public boolean equals(Vector a)
-    {
-        return a.getX() == x && a.getY() == y && a.getZ() == z;
+    public boolean equals(Vector other) {
+
+        return Math.abs(this.x - other.x) < 0.00001 &&
+                Math.abs(this.y - other.y) < 0.00001 &&
+                Math.abs(this.z - other.z) < 0.00001 &&
+                Math.abs(this.omega - other.omega) < 0.00001;
     }
 
     public double magnitude()//√(x² + y² + z²)
