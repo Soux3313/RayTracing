@@ -128,5 +128,25 @@ public class Color {
         return new Color(red,green,blue);
     }
 
+    // Convert the color to an integer format for BufferedImage (TYPE_INT_RGB)
+    public int toImageColor() {
+        int red = (int) (r * 255);
+        int green = (int) (g * 255);
+        int blue = (int) (b * 255);
+        int redValue = (red & 0xFF) << 16;
+        int greenValue = (green & 0xFF) << 8;
+        int blueValue = blue & 0xFF;
+        return 0xFF000000 | redValue | greenValue | blueValue;
+    }
+    // Convert an integer from BufferedImage format to a Color object
+    public static Color fromImageColor(int imageColor) {
+        int red = (imageColor >> 16) & 0xFF;
+        int green = (imageColor >> 8) & 0xFF;
+        int blue = imageColor & 0xFF;
+        double r = (double) red / 255;
+        double g = (double) green / 255;
+        double b = (double) blue / 255;
+        return new Color(r, g, b);
+    }
 
 }
