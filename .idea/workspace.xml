@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="updated equals method">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Canvas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/CanvasTest.java" afterDir="false" />
+    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="added Canvas class and Color conversion methods, color conversion still not working perfectly tho">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Ray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/RayTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Color.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,18 +39,32 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2WtQBN3jScGC77G0pt3Nx0X6OYd" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -88,7 +101,7 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.CanvasTest">
+  <component name="RunManager" selected="Gradle.RayTest">
     <configuration name="CanvasTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -135,29 +148,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ColorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.example.ColorTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="ColorTest.testConvenience" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -172,6 +162,29 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;org.example.ColorTest.testConvenience&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="RayTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.example.RayTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -206,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.RayTest" />
         <item itemvalue="Gradle.CanvasTest" />
         <item itemvalue="Gradle.CanvasTest.named" />
         <item itemvalue="Gradle.VectorTest.equals" />
         <item itemvalue="Gradle.ColorTest.testConvenience" />
-        <item itemvalue="Gradle.ColorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +249,8 @@
       <workItem from="1698228092010" duration="1956000" />
       <workItem from="1698925855389" duration="747000" />
       <workItem from="1699337835308" duration="263000" />
-      <workItem from="1699344547204" duration="7411000" />
+      <workItem from="1699344547204" duration="7771000" />
+      <workItem from="1699430743763" duration="1761000" />
     </task>
     <task id="LOCAL-00001" summary="Math Library">
       <created>1697617376613</created>
@@ -294,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699338058307</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added Canvas class and Color conversion methods, color conversion still not working perfectly tho">
+      <created>1699366102087</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699366102087</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +332,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="tests" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -331,7 +352,8 @@
     <MESSAGE value="added quick color creation (ex.: Color cyan = new Color(&quot;cyan&quot;) for convenience reasons" />
     <MESSAGE value="deleted main" />
     <MESSAGE value="updated equals method" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated equals method" />
+    <MESSAGE value="added Canvas class and Color conversion methods, color conversion still not working perfectly tho" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Canvas class and Color conversion methods, color conversion still not working perfectly tho" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -343,12 +365,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Color.java</url>
-          <line>134</line>
+          <line>132</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Color.java</url>
-          <line>144</line>
+          <line>142</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
