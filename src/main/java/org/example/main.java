@@ -4,7 +4,7 @@ public class main {
     public static void main(String[] args) {
 
         Canvas image = new Canvas(500,500);
-        Point spectator = new Point(0,0,-100);
+        Point spectator = new Point(250,250,-100);
 
         for(int i = 0; i < image.getWidth(); i++)
         {
@@ -14,13 +14,21 @@ public class main {
                 Ray ray = new Ray(spectator, p);
                //System.out.println(ray.getVector().magnitude());
                 System.out.println(ray.getVector().toString());
-                Color c = new Color(ray.getVector().getX(),
-                        ray.getVector().getY(),
-                        ray.getVector().getZ());
-
+                Color c = new Color(abs(ray.getVector().getX()),
+                        abs(ray.getVector().getY()),
+                        abs(ray.getVector().getZ()));
                 image.setPixel(i,j,c);
             }
         }
-        image.saveToFile("test3");
+        image.saveToFile("test4");
+    }
+
+    private static double abs(double value)
+    {
+        if (value < 0)
+        {
+            return value * -1;
+        }
+        else return value;
     }
 }

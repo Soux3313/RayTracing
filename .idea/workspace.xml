@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="added Ray Class &amp; Tests">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Ray.java" afterDir="false" />
+    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="added main class for image generation">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +238,7 @@
       <workItem from="1698925855389" duration="747000" />
       <workItem from="1699337835308" duration="263000" />
       <workItem from="1699344547204" duration="7771000" />
-      <workItem from="1699430743763" duration="4949000" />
+      <workItem from="1699430743763" duration="5607000" />
     </task>
     <task id="LOCAL-00001" summary="Math Library">
       <created>1697617376613</created>
@@ -313,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699434057399</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added main class for image generation">
+      <created>1699454902528</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699454902528</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +356,8 @@
     <MESSAGE value="updated equals method" />
     <MESSAGE value="added Canvas class and Color conversion methods, color conversion still not working perfectly tho" />
     <MESSAGE value="added Ray Class &amp; Tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Ray Class &amp; Tests" />
+    <MESSAGE value="added main class for image generation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added main class for image generation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
