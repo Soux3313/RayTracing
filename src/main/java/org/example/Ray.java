@@ -17,7 +17,7 @@ public class Ray {
     {
         this.originPoint = origin;
         this.targetPoint = target;
-        this.vector = originPoint.sub(target).norm();
+        this.vector = targetPoint.sub(originPoint).norm();
     }
 
     public Point getOriginPoint() {

@@ -17,7 +17,6 @@ public class Canvas {
         this.y = height;
         this.fileName = "unnamed";
         outputImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        saveToFile(fileName);
     }
     public Canvas(int width, int height, String fileName)
     {
@@ -54,7 +53,7 @@ public class Canvas {
 
     public void saveToFile(String filename) {
         try {
-            File output = new File(filename);
+            File output = new File("C:\\Users\\fraja\\OneDrive\\Desktop\\Uni-Zeugs\\3. Semester\\RayTracing\\Bilder\\" + filename + ".png");
             ImageIO.write(outputImage, "png", output);
         } catch (IOException e) {
             e.printStackTrace();
