@@ -133,4 +133,73 @@ class MatrixTest {
 
         assertFalse(test);
     }
+    /*Scenario: Multiplying two matrices
+    Given the following matrix M:
+            | 1 | 2 | 3 | 4 |
+            | 5 | 6 | 7 | 8 |
+            | 9 | 8 | 7 | 6 |
+            | 5 | 4 | 3 | 2 |
+    And the following matrix B:
+            | -2 | 1 | 2 | 3 |
+            | 3 | 2 | 1 | -1 |
+            | 4 | 3 | 6 | 5 |
+            | 1 | 2 | 7 | 8 |
+    Then M * B is the following matrix:
+            | 20| 22 | 50 | 48 |
+            | 44| 54 | 114 | 108 |
+            | 40| 58 | 110 | 102 |
+            | 16| 26 | 46 | 42 |
+*/
+    @Test
+    void testMultiplication()
+    {
+        double[][] M =
+                {{1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 8, 7, 6},
+                {5, 4, 3, 2}};
+        Matrix m = new Matrix(M);
+        double[][] B =
+                {{-2, 1, 2, 3},
+                {3, 2, 1, -1},
+                {4, 3, 6, 5},
+                {1, 2, 7, 8}};
+        Matrix b = new Matrix(B);
+        double[][] expected =
+                {{20,22,50,48},
+                {44,54,114,108},
+                {40,58,110,102},
+                {16,26,46,42}};
+        Matrix actual = m.mult(b);
+        System.out.println(actual.toString());
+        assertArrayEquals(expected,actual.getMatrix());
+    }
+
+ /*   Scenario: Multiplying a matrix with the identity matrix
+    Given M is the matrix identity(4)
+    And the following matrix B:
+            | 20 | 22 | 50 | 48 |
+            | 44 | 54 | 114 | 108 |
+            | 40 | 58 | 110 | 102 |
+            | 16 | 26 | 46 | 42 |
+    Then M * B = B
+    And B * M = B
+*/
+    @Test
+    void testMultiplicationIdentity()
+    {
+        Matrix m = new Matrix(4);
+        double[][] B =
+                        {{20,22,50,48},
+                        {44,54,114,108},
+                        {40,58,110,102},
+                        {16,26,46,42}};
+
+        Matrix b = new Matrix(B);
+
+        Matrix actual = m.mult(b);
+
+        System.out.println(actual.toString());
+        assertArrayEquals(B, actual.getMatrix());
+    }
 }

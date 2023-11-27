@@ -64,4 +64,23 @@ public class Matrix {
 
         return true;
     }
+
+    public Matrix mult(Matrix m)
+    {
+        if(this.matrix[0].length != m.getMatrix().length) return this; //check if this columns equals objects rows
+
+        double[][] res = new double[matrix.length][m.getMatrix()[0].length];
+
+        for(int i = 0; i < this.matrix[0].length; i++)//rows
+        {
+            for(int k = 0; k < m.getMatrix().length; k++)//columns
+            {
+                for(int j = 0; j < matrix.length; j++)//component multiplication
+                {
+                    res[i][k] += this.matrix[i][j] * m.getMatrix()[j][i];
+                }
+            }
+        }
+        return new Matrix(res);
+    }
 }

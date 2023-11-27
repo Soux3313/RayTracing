@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="added absolute function in main, to avoid negative color values">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Matrix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/MatrixTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/MatrixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/MatrixTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +90,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -240,6 +241,8 @@
       <workItem from="1699337835308" duration="263000" />
       <workItem from="1699344547204" duration="7771000" />
       <workItem from="1699430743763" duration="9042000" />
+      <workItem from="1700035622848" duration="1785000" />
+      <workItem from="1700239338937" duration="331000" />
     </task>
     <task id="LOCAL-00001" summary="Math Library">
       <created>1697617376613</created>
@@ -375,6 +378,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/org/example/CanvasTest.java</url>
           <line>23</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Matrix.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
