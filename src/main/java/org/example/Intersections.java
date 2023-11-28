@@ -1,56 +1,51 @@
 package org.example;
 
-import javax.print.attribute.IntegerSyntax;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Intersections {
 
-    private Intersection[] intersections;
+    private List<Intersection> intersections;
     private int count = 0;
 
+    public Intersections(Intersection... intersection) {
+        this.intersections = new ArrayList<>();
 
-    public Intersections(Intersection... intersection)
-    {
-        this.intersections = new Intersection[intersection.length];
-
-        for(int i = 0; i < intersections.length; i++)
-        {
-            this.intersections[i] = intersection[i];
+        for (Intersection value : intersection) {
+            this.intersections.add(value);
         }
-        this.intersections = sort(intersection);
 
-        count = intersections.length;
+        sort(this.intersections);
 
+        count = this.intersections.size();
     }
 
-    public Intersection get(int index)
-    {
-        return intersections[index];
+    public Intersection get(int index) {
+        return intersections.get(index);
     }
 
     public int getCount() {
         return count;
     }
 
-    private Intersection[] sort(Intersection[] intersections)
-    {
-        int length = intersections.length;
+    private void sort(List<Intersection> intersections) {
+        int length = intersections.size();
         boolean swapped;
 
-        do{
+        do {
             swapped = false;
-            for(int i = 1; i < length; i++)
-            {
-                if(intersections[i-1].t() > intersections[i].t())
-                {
-                    Intersection temp = intersections[i - 1];
-                    intersections[i - 1] = intersections[i];
-                    intersections[i] = temp;
+            for (int i = 1; i < length; i++) {
+                if (intersections.get(i - 1).t() > intersections.get(i).t()) {
+                    swap(intersections, i - 1, i);
                     swapped = true;
                 }
             }
-        }while (swapped);
-
-        return intersections;
+        } while (swapped);
     }
 
+    private void swap(List<Intersection> list, int i, int j) {
+        Intersection temp = list.get(i);
+        list.set(i, list.get(j));
+        list.set(j, temp);
+    }
 }

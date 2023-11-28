@@ -33,7 +33,6 @@ public class Ray {
     }
 
 
-
     public Point pointAt(double distance)
     {
         Vector v = vector.mult(distance);

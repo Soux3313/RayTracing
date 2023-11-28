@@ -12,7 +12,7 @@ class IntersectionTest {
         Intersection i1 = new Intersection(3.5,sphere);
 
         assertEquals(i1.t(), 3.5);
-        assertEquals(sphere, i1.sphere());
+        assertEquals(sphere, i1.shape());
     }
 
     @Test
