@@ -14,9 +14,9 @@ public class main {
                 Ray ray = new Ray(spectator, p);
                //System.out.println(ray.getVector().magnitude());
                 System.out.println(ray.getVector().toString());
-                Color c = new Color(abs(ray.getVector().getX()),
-                        abs(ray.getVector().getY()),
-                        abs(ray.getVector().getZ()));
+                Color c = new Color(abs(ray.getVector().sqrMagnitude()),
+                        abs(ray.getVector().sqrMagnitude()),
+                        abs(ray.getVector().sqrMagnitude()));
                 image.setPixel(i,j,c);
             }
         }

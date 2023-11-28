@@ -5,7 +5,7 @@ public class Vector {
     private double x;
     private double y;
     private double z;
-    private double omega;
+    private double w;
 
 
     public Vector(double x, double y, double z)
@@ -13,7 +13,15 @@ public class Vector {
         this.x = x;
         this.y = y;
         this.z = z;
-        double omega = 0;
+        this.w = 0;
+    }
+
+    public Vector(double x, double y, double z, double w)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
     }
 
     public double getX() {
@@ -29,7 +37,7 @@ public class Vector {
     }
 
     public double getOmega() {
-        return omega;
+        return w;
     }
 
     public Vector add(Vector a)
@@ -84,7 +92,7 @@ public class Vector {
         return Math.abs(this.x - other.x) < 0.00001 &&
                 Math.abs(this.y - other.y) < 0.00001 &&
                 Math.abs(this.z - other.z) < 0.00001 &&
-                Math.abs(this.omega - other.omega) < 0.00001;
+                Math.abs(this.w - other.w) < 0.00001;
     }
 
     public double magnitude()//√(x² + y² + z²)

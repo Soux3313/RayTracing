@@ -4,7 +4,7 @@ public class Point {
     private double x;
     private double y;
     private double z;
-    private double omega;
+    private double w;
 
 
     public Point(double x, double y, double z)
@@ -12,7 +12,15 @@ public class Point {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.omega = 1;
+        this.w = 1;
+    }
+
+    public Point(double x, double y, double z, double w)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
     }
 
     public double getX() {
@@ -28,7 +36,7 @@ public class Point {
     }
 
     public double getOmega() {
-        return omega;
+        return w;
     }
 
     public Vector sub(Point a)
@@ -84,7 +92,7 @@ public class Point {
         return Math.abs(this.x - other.x) < 0.00001 &&
                 Math.abs(this.y - other.y) < 0.00001 &&
                 Math.abs(this.z - other.z) < 0.00001 &&
-                Math.abs(this.omega - other.omega) < 0.00001;
+                Math.abs(this.w - other.w) < 0.00001;
     }
 
     public Point min(Point a)
