@@ -39,4 +39,12 @@ public class Ray {
 
         return originPoint.add(v);
     }
+
+    public Ray transform(Matrix transformMatrix)
+    {
+        Point origin = transformMatrix.mult(getOriginPoint());
+        Vector direction = transformMatrix.mult(getVector());
+
+        return new Ray(origin,direction);
+    }
 }

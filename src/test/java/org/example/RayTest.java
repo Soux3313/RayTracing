@@ -41,4 +41,36 @@ class RayTest {
         assertArrayEquals(expected,actual);
     }
 
+
+    @Test
+    void translate()
+    {
+        Ray r = new Ray(new Point(1,2,3), new Vector(0,1,0));
+        Matrix m = Matrix.translate(3,4,5);
+        Ray r2 = r.transform(m);
+
+        Point expectedP = new Point(4,6,8);
+        Vector expectedV = new Vector(0,1,0);
+        Point actualP = r2.getOriginPoint();
+        Vector actualV = r2.getVector();
+
+        assertTrue(expectedP.equals(actualP));
+        assertTrue(expectedV.equals(actualV));
+    }
+
+    @Test
+    void scale()
+    {
+        Ray r = new Ray(new Point(1,2,3), new Vector(0,1,0));
+        Matrix m = Matrix.scale(2,3,4);
+        Ray r2 = r.transform(m);
+
+        Point expectedP = new Point(2,6,12);
+        Vector expectedV = new Vector(0,3,0);
+        Point actualP = r2.getOriginPoint();
+        Vector actualV = r2.getVector();
+
+        assertTrue(expectedP.equals(actualP));
+        assertTrue(expectedV.equals(actualV));
+    }
 }

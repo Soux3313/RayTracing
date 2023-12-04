@@ -67,6 +67,11 @@ public class Matrix {
         return this.matrix[x][y];
     }
 
+    private void setCell(double value, int x, int y)
+    {
+        this.matrix[x][y] = value;
+    }
+
     public String toString()
     {
         String matrixString = "";
@@ -209,7 +214,6 @@ public class Matrix {
         return new Matrix(result);
     }
 
-
     public double determinant()
     {
         if (this.matrix.length == 2)
@@ -283,6 +287,71 @@ public class Matrix {
         double scale = 1/determinant();
 
         return adj().mult(scale);
+    }
+
+    public static Matrix translate(double dx, double dy, double dz)
+    {
+        Matrix m = identity(4);
+        //Vector v = new Vector(dx,dy,dz);
+
+        m.setCell(dx,0,3);
+        m.setCell(dy,1,3);
+        m.setCell(dz,2,3);
+
+        return m;
+
+    }
+
+    public static Matrix scale(double sx, double sy, double sz)
+    {
+        Matrix m = identity(4);
+        //Vector v = new Vector(dx,dy,dz);
+
+        m.setCell(sx,0,0);
+        m.setCell(sy,1,1);
+        m.setCell(sz,2,2);
+
+        return m;
+    }
+
+    public static Matrix rotateX(double angle)
+    {
+        Matrix m = identity(4);
+        //Vector v = new Vector(dx,dy,dz);
+
+        m.setCell(Math.cos(angle),1,1);
+        m.setCell(-Math.sin(angle),1,2);
+        m.setCell(Math.sin(angle),2,1);
+        m.setCell(Math.cos(angle),2,2);
+
+        return m;
+    }
+
+    public static Matrix rotateY(double angle)
+    {
+        Matrix m = identity(4);
+        //Vector v = new Vector(dx,dy,dz);
+
+        m.setCell(Math.cos(angle),0,0);
+        m.setCell(-Math.sin(angle),2,0);
+        m.setCell(Math.sin(angle),0,2);
+        m.setCell(Math.cos(angle),2,2);
+
+        return m;
+
+    }
+
+    public static Matrix rotateZ(double angle)
+    {
+        Matrix m = identity(4);
+        //Vector v = new Vector(dx,dy,dz);
+
+        m.setCell(Math.cos(angle),0,0);
+        m.setCell(-Math.sin(angle),0,1);
+        m.setCell(Math.sin(angle),1,0);
+        m.setCell(Math.cos(angle),1,1);
+
+        return m;
     }
 }
 

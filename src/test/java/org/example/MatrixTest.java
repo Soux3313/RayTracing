@@ -1,7 +1,6 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestClassOrder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -78,7 +77,7 @@ class MatrixTest {
 
         Matrix m = new Matrix(matrix);
 
-        System.out.println(m.toString());
+        System.out.println(m);
     }
 
     @Test
@@ -315,25 +314,176 @@ class MatrixTest {
     }
 
     @Test
-    void testInversion1()
+    void multByTranslation()
     {
-        double[][] M =
-                       {{-5,2,6,8},
-                        {1,-5,1,8},
-                        {7,7,-6,-7},
-                        {1,-3,7,4}};
-        Matrix m = new Matrix(M);
+        Matrix m = Matrix.translate(5,-3,2);
+        Point p = new Point(-3,4,5);
+        Point actual = new Point(2,1,7);
 
-        double[][] expected = {
-                {0.21805, 0.45113, 0.24060, -0.04511},
-                {-0.80827, -1.45677, -0.44361, 0.52068},
-                {-0.07895, -0.22368, -0.05263, 0.19737},
-                {-0.52256, -0.81391, -0.30075, 0.30639}
-        };
+        boolean test = m.mult(p).equals(actual);
 
-        Matrix actual = m.invert();
-
-        assertArrayEquals(expected, actual.getMatrix());
+        assertTrue(test);
     }
+
+
+    @Test
+    void multByInverse()//??????????????????????????????????????????????????????????????????????????????????????????????
+    {
+        Matrix m = Matrix.translate(5,-3,2);
+        Matrix inv = m.getInverse();
+        Point p = new Point(-3,4,5);
+        Point actual = new Point(-8,7,3.0);
+
+        Point p2 = inv.mult(p);
+
+        boolean test = p2.equals(actual);
+
+        assertTrue(test);
+    }
+    @Test
+    void translationDoesNotAffectVectors()
+    {
+        Matrix m = Matrix.translate(5,-3,2);
+        Vector v = new Vector(-3,4,5);
+
+        boolean test = m.mult(v).equals(v);
+
+        assertTrue(test);
+    }
+    @Test
+    void scalingPoint()
+    {
+        Matrix m = Matrix.scale(2,3,4);
+        Point p = new Point(-4,6,8);
+        Point actual = new Point(-8,18,32);
+
+        boolean test = m.mult(p).equals(actual);
+
+        assertTrue(test);
+    }
+    @Test
+    void scalingVector()
+    {
+        Matrix m = Matrix.scale(2,3,4);
+        Vector p = new Vector(-4,6,8);
+        Vector actual = new Vector(-8,18,32);
+        boolean test = m.mult(p).equals(actual);
+
+        assertTrue(test);
+    }
+    @Test
+    void multInverseScaling()
+    {
+        Matrix m = Matrix.scale(2,3,4);
+        Matrix inv = m.getInverse();
+        Vector v = new Vector(-4,6,8);
+        Vector actual = new Vector(-2,2,2);
+
+        boolean test = inv.mult(v).equals(actual);
+
+        assertTrue(test);
+    }
+    @Test
+    void reflectionScalingNegative()
+    {
+        Matrix m = Matrix.scale(-1,1,1);
+        Point p = new Point(2,3,4);
+        Point actual = new Point(-2,3,4);
+
+        boolean test = m.mult(p).equals(actual);
+
+        assertTrue(test);
+    }
+    @Test
+    void rotatingPointAroundX()
+    {
+        Point p = new Point(0,1,0);
+        Matrix half = Matrix.rotateX(0.7853981);
+        Matrix full = Matrix.rotateX(1.5707963);
+        Point actual = new Point(0, 0.707106, 0.707106);
+        Point actual2 = new Point(0,0,1);
+
+
+        boolean test = half.mult(p).equals(actual) && full.mult(p).equals(actual2);
+
+        assertTrue(test);
+    }
+    @Test
+    void inverseRotationX()
+    {
+        Point p = new Point(0,1,0);
+        Matrix half = Matrix.rotateX(0.7853981);
+        Matrix inv = half.getInverse();
+        Point actual = new Point(0, 0.707106, -0.707106);
+
+        boolean test = inv.mult(p).equals(actual);
+
+        assertTrue(test);
+    }
+    @Test
+    void rotatingPointAroundY()
+    {
+        Point p = new Point(0,0,1);
+        Matrix half = Matrix.rotateY(0.7853981);
+        Matrix full = Matrix.rotateY(1.5707963);
+        Point actual = new Point( 0.707106,0, 0.707106);
+        Point actual2 = new Point(1,0,0);
+
+
+        boolean test = half.mult(p).equals(actual) && full.mult(p).equals(actual2);
+
+        assertTrue(test);
+    }
+    @Test
+    void rotatingPointAroundZ()
+    {
+        Point p = new Point(0,1,0);
+        Matrix half = Matrix.rotateZ(0.7853981);
+        Matrix full = Matrix.rotateZ(1.5707963);
+        Point actual = new Point( -0.707106,0.707106,0);
+        Point actual2 = new Point(-1,0,0);
+
+
+        boolean test = half.mult(p).equals(actual) && full.mult(p).equals(actual2);
+
+        assertTrue(test);
+    }
+    @Test
+    void individualTransformationsInSequence()
+    {
+        Point p = new Point(1,0,1);
+        Matrix full = Matrix.rotateX(1.5707963);
+        Matrix scale = Matrix.scale(5,5,5);
+        Matrix transl = Matrix.translate(10,5,7);
+
+        Point p2 = full.mult(p);
+        Point p3 = scale.mult(p2);
+        Point p4 = transl.mult(p3);
+
+        boolean test =
+                p2.equals(new Point(1,-1,0)) &&
+                p3.equals(new Point(5,-5,0)) &&
+                p4.equals(new Point(15,0,7));
+
+        assertTrue(test);
+
+    }
+    @Test
+    void chainedTransformationReverseOrder()
+    {
+        Point p = new Point(1,0,1);
+        Matrix full = Matrix.rotateX(1.5707963);
+        Matrix scale = Matrix.scale(5,5,5);
+        Matrix transl = Matrix.translate(10,5,7);
+
+        Matrix m = transl.mult(scale).mult(full);
+
+        boolean test = m.mult(p).equals(new Point(15,0,7));
+
+        assertTrue(test);
+
+
+    }
+
 
 }
