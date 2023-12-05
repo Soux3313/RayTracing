@@ -2,7 +2,7 @@ package org.example;
 
 public class main {
     public static void main(String[] args) {
-
+/*
         Canvas image = new Canvas(500,500);
         Sphere sphere = new Sphere();
         Point origin = new Point(0,0,-10);
@@ -65,8 +65,42 @@ public class main {
             }
         }
         image.saveToFile("test5");
+        */
 
+        int width = 400;
+        int height = 400;
+        double wallZ = 10;
+        double wallSize = 7;
+        double halfSize = wallSize / 2;
+        double pixelSize = wallSize / width;
 
+        Canvas image = new Canvas(width, height);
+        Sphere s = new Sphere();
+        Matrix transform = Matrix.scale(0,0,0);
+        s.setTransformation(transform);
+        Point origin = new Point(0,0,-10);
+
+        for(int y = 0; y < height - 1; y++)
+        {
+            double worldY = halfSize - pixelSize * y;
+            for(int x = 0; x < width; x++)
+            {
+                double worldX = -halfSize + pixelSize * x;
+                Point position = new Point(worldX, worldY, wallZ);
+                Ray ray = new Ray(origin, position);
+                Intersections xs = s.intersect(ray);
+                Color c;
+
+                if (xs.getCount() == 0) {
+                    c = new Color("blue"); // Kugel nicht getroffen
+                } else {
+                    c = new Color(1,0.64,0); // Kugel getroffen
+                }
+                image.setPixel(x,y,c);
+            }
+        }
+
+        image.saveToFile("transformation2");
 
     }
 
