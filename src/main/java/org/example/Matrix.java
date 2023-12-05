@@ -280,7 +280,7 @@ public class Matrix {
         return new Matrix(res);
     }
 
-    public Matrix invert()
+    private Matrix invert()
     {
         assert this.determinant() != 0 : "Matrix cannot be inverted";
 

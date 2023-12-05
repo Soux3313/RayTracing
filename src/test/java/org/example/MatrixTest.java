@@ -336,9 +336,7 @@ class MatrixTest {
 
         Point p2 = inv.mult(p);
 
-        boolean test = p2.equals(actual);
-
-        assertTrue(test);
+        assertEquals(p2, actual);
     }
     @Test
     void translationDoesNotAffectVectors()
@@ -481,8 +479,6 @@ class MatrixTest {
         boolean test = m.mult(p).equals(new Point(15,0,7));
 
         assertTrue(test);
-
-
     }
 
 

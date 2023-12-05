@@ -114,7 +114,7 @@ class SphereTest {
         assertTrue(test2);
     }
     @Test
-    void testNonaxial()
+    void testNonAxial()
     {
         Sphere s = new Sphere();
         Vector n = s.normalAt(new Point(0.57735,0.57735,0.57735));
@@ -126,6 +126,46 @@ class SphereTest {
 
         assertTrue(test1);
         assertTrue(test2);
+    }
+    @Test
+    void defaultTransformation()
+    {
+        Sphere s = new Sphere();
+
+        assertEquals(s.getTransformation(), Matrix.identity(4));
+    }
+    @Test
+    void changeTransformation()
+    {
+        Sphere s = new Sphere();
+        Matrix m = Matrix.translate(2,3,4);
+        s.setTransformation(m);
+
+        assertEquals(s.getTransformation(), m);
+    }
+    @Test
+    void intersectScaledWithRay()
+    {
+        Ray r = new Ray(new Point(0,0,-5), new Vector(0,0,1));
+        Sphere s = new Sphere();
+        Matrix m = Matrix.scale(2,2,2);
+        s.setTransformation(m);
+        Intersections xs = s.intersect(r);
+
+        assertEquals(xs.getCount(), 2);
+        assertEquals(xs.get(0).t(), 3);
+        assertEquals(xs.get(1).t(), 7);
+    }
+    @Test
+    void intersectTranslationWithRay()//??????????????????????????????????????????????????????
+    {
+        Ray r = new Ray(new Point(0,0,-5), new Vector(0,0,1));
+        Sphere s = new Sphere();
+        Matrix m = Matrix.translate(5,0,0);
+        s.setTransformation(m);
+        Intersections xs = s.intersect(r);
+
+        assertEquals(0,xs.getCount());
     }
 
 

@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Intersections {
@@ -9,11 +10,10 @@ public class Intersections {
     private int count = 0;
 
     public Intersections(Intersection... intersection) {
+
         this.intersections = new ArrayList<>();
 
-        for (Intersection value : intersection) {
-            this.intersections.add(value);
-        }
+        this.intersections.addAll(Arrays.asList(intersection));
 
         sort(this.intersections);
 

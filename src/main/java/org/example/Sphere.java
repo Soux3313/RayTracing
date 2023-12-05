@@ -15,7 +15,7 @@ public class Sphere extends Shape{
     }
 
     @Override
-    public Intersections intersect(Ray ray) {
+    public Intersections localIntersect(Ray ray) {
 
         // Der Vektor vom Strahl ursprung zur Kugelmitte
         Vector sphereToRay = ray.getOriginPoint().sub(center);
@@ -48,6 +48,7 @@ public class Sphere extends Shape{
 
         return new Intersections(intersectionsList.get(0), intersectionsList.get(1));
     }
+
 
     @Override
     public Vector normalAt(Point point) {
