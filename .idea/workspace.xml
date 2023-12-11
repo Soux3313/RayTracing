@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="added matrix multiplication">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_12_2023_04_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_12_2023_04_25__Changes_.xml" afterDir="false" />
+    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="optimized performance for matrix, added sphere/intersection">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Scene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/SceneTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Intersections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Intersections.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Matrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/IntersectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/IntersectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/MatrixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/MatrixTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +39,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
+        <option value="Record" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -58,6 +65,10 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -89,7 +100,8 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -100,21 +112,8 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main">
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.main" />
-      <module name="RayTracer2.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CanvasTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.MatrixTest">
+    <configuration name="IntersectionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -127,7 +126,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.CanvasTest&quot;" />
+            <option value="&quot;org.example.IntersectionTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -183,7 +182,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RayTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="SceneTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -196,7 +195,30 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.RayTest&quot;" />
+            <option value="&quot;org.example.SceneTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="SceneTest.intersectSceneWithRay" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.example.SceneTest.intersectSceneWithRay&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -208,11 +230,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.RayTest" />
-        <item itemvalue="Gradle.MatrixTest.multByInverse" />
         <item itemvalue="Gradle.MatrixTest" />
-        <item itemvalue="Application.main" />
-        <item itemvalue="Gradle.CanvasTest" />
+        <item itemvalue="Gradle.MatrixTest.multByInverse" />
+        <item itemvalue="Gradle.IntersectionTest" />
+        <item itemvalue="Gradle.SceneTest.intersectSceneWithRay" />
+        <item itemvalue="Gradle.SceneTest" />
       </list>
     </recent_temporary>
   </component>
@@ -240,10 +262,7 @@
       <workItem from="1699337835308" duration="263000" />
       <workItem from="1699344547204" duration="7771000" />
       <workItem from="1699430743763" duration="9042000" />
-      <workItem from="1700035622848" duration="1785000" />
-      <workItem from="1700239338937" duration="331000" />
-      <workItem from="1701680511050" duration="3316000" />
-      <workItem from="1701756628153" duration="2023000" />
+      <workItem from="1701181342428" duration="10814000" />
     </task>
     <task id="LOCAL-00001" summary="Math Library">
       <created>1697617376613</created>
@@ -329,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699455562668</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="optimized performance for matrix, added sphere/intersection">
+      <created>1701184993734</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701184993734</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +396,9 @@
     <MESSAGE value="added Ray Class &amp; Tests" />
     <MESSAGE value="added main class for image generation" />
     <MESSAGE value="added absolute function in main, to avoid negative color values" />
-    <option name="LAST_COMMIT_MESSAGE" value="added absolute function in main, to avoid negative color values" />
+    <MESSAGE value="completed matrix, inversion doesnt work fully for some reason" />
+    <MESSAGE value="optimized performance for matrix, added sphere/intersection" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimized performance for matrix, added sphere/intersection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -381,19 +409,9 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/main.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Ray.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Matrix.java</url>
-          <line>284</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/SceneTest.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

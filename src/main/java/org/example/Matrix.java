@@ -216,6 +216,11 @@ public class Matrix {
 
     public double determinant()
     {
+        if(this.matrix.length == 1)
+        {
+            return matrix[0][0];
+        }
+
         if (this.matrix.length == 2)
         {
             return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
@@ -225,16 +230,16 @@ public class Matrix {
 
         for(int j = 0; j < matrix.length; j++)
         {
-            det += matrix[0][j] * this.cofactor(0,j) * Math.pow(-1,j);
+            det += matrix[0][j] * this.minor(0,j) * Math.pow(-1,j);
         }
 
         return det;
     }
 
-    private double cofactor(int row, int col)
+    private Matrix submatrix(int row, int col)
     {
         double[][] submatrix = new double[matrix.length-1][matrix.length-1];
-
+/*
         int subi = 0;
         int subj = 0;
 
@@ -252,10 +257,26 @@ public class Matrix {
                     }
                 }
             }
+        }*/
+        int r = -1;
+        for (int i = 0; i < matrix.length; i++) {
+            if (i == row) continue;
+            r++;
+            int c = -1;
+            for (int j = 0; j < matrix.length; j++) {
+                if (j == col) continue;
+                submatrix[r][++c] = this.matrix[i][j];
+            }
         }
-        Matrix subM = new Matrix(submatrix);
 
-        return subM.determinant();
+        return new Matrix(submatrix);
+    }
+    public double minor(int row, int col) {
+        return submatrix(row, col).determinant();
+    }
+
+    public double cofactor(int row, int col) {
+        return Math.pow(-1, row + col) * minor(row, col);
     }
 
     public final boolean isInvertible() {
@@ -264,9 +285,7 @@ public class Matrix {
 
     public Matrix adj()
     {
-        if (! isInvertible()) {
-            throw new RuntimeException("This matrix cannot be inverted");
-        }
+
         double[][] res = new double[matrix.length][matrix.length];
 
         for(int i = 0; i < matrix.length; i++)
@@ -277,16 +296,20 @@ public class Matrix {
                 res[i][j] = this.cofactor(i,j);
             }
         }
-        return new Matrix(res);
+        return new Matrix(res).transpose();
     }
 
     private Matrix invert()
     {
-        assert this.determinant() != 0 : "Matrix cannot be inverted";
+        if (! isInvertible()) {
+            throw new RuntimeException("This matrix cannot be inverted");
+        }
+        Matrix adj = this.adj();
 
         double scale = 1/determinant();
 
-        return adj().mult(scale);
+        return adj.mult(scale);
+
     }
 
     public static Matrix translate(double dx, double dy, double dz)
@@ -305,7 +328,6 @@ public class Matrix {
     public static Matrix scale(double sx, double sy, double sz)
     {
         Matrix m = identity(4);
-        //Vector v = new Vector(dx,dy,dz);
 
         m.setCell(sx,0,0);
         m.setCell(sy,1,1);
@@ -352,6 +374,22 @@ public class Matrix {
         m.setCell(Math.cos(angle),1,1);
 
         return m;
+    }
+
+    public static Matrix viewTransform(Point position, Point lookAt, Vector up)
+    {
+        Vector vpn =  position.sub(lookAt).norm();
+        Vector right = up.norm().cross(vpn);
+        Vector trueUp = vpn.cross(right);
+        double[][] matrix =
+                {
+                        {right.getX(),right.getY(),right.getZ(),0},
+                        {trueUp.getX(),trueUp.getY(),trueUp.getZ(),0},
+                        {vpn.getX(),vpn.getY(),vpn.getZ(),0},
+                        {0,0,0,1}
+                };
+        Matrix m = new Matrix(matrix);
+        return m.mult(translate(-position.getX(),-position.getY(),-position.getZ()));
     }
 }
 

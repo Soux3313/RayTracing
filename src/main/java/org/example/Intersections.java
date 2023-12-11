@@ -15,7 +15,7 @@ public class Intersections {
 
         this.intersections.addAll(Arrays.asList(intersection));
 
-        sort(this.intersections);
+        sort();
 
         count = this.intersections.size();
     }
@@ -24,11 +24,24 @@ public class Intersections {
         return intersections.get(index);
     }
 
+    public void addIntersections(Intersections intersections)
+    {
+        if(intersections.getCount() == 0) return;
+
+        for(int i = 0; i < intersections.getCount(); i++)
+        {
+            this.intersections.add(intersections.get(i));
+        }
+
+        sort();
+        count = this.intersections.size();
+    }
+
     public int getCount() {
         return count;
     }
 
-    private void sort(List<Intersection> intersections) {
+    private void sort() {
         int length = intersections.size();
         boolean swapped;
 
@@ -36,16 +49,25 @@ public class Intersections {
             swapped = false;
             for (int i = 1; i < length; i++) {
                 if (intersections.get(i - 1).t() > intersections.get(i).t()) {
-                    swap(intersections, i - 1, i);
+                    swap(i - 1, i);
                     swapped = true;
                 }
             }
         } while (swapped);
     }
 
-    private void swap(List<Intersection> list, int i, int j) {
-        Intersection temp = list.get(i);
-        list.set(i, list.get(j));
-        list.set(j, temp);
+    private void swap(int i, int j) {
+        Intersection temp = intersections.get(i);
+        intersections.set(i, intersections.get(j));
+        intersections.set(j, temp);
+    }
+
+    public Intersection hit()
+    {
+        for(int i = 0; i < intersections.size(); i++)
+        {
+            if(intersections.get(i).t() > 0) return intersections.get(i);
+        }
+        return null;
     }
 }

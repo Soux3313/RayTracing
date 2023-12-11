@@ -42,4 +42,48 @@ class IntersectionTest {
         assertEquals(2.0, xs.get(1).t());
 
     }
+
+    @Test
+    void hitAllIntersectionsPositive()
+    {
+        Sphere s = new Sphere();
+        Intersection i1 = new Intersection(1, s);
+        Intersection i2 = new Intersection(2, s);
+        Intersections xs = new Intersections(i2,i1);
+
+        assertEquals(i1, xs.hit());
+    }
+    @Test
+    void hitSomeIntersectionsNegative()
+    {
+        Sphere s = new Sphere();
+        Intersection i1 = new Intersection(-1, s);
+        Intersection i2 = new Intersection(1, s);
+        Intersections xs = new Intersections(i2,i1);
+
+        assertEquals(i2, xs.hit());
+    }
+    @Test
+    void hitAllIntersectionsNegative()
+    {
+        Sphere s = new Sphere();
+        Intersection i1 = new Intersection(-2, s);
+        Intersection i2 = new Intersection(-1, s);
+        Intersections xs = new Intersections(i2,i1);
+
+        assertNull(xs.hit());
+    }
+    @Test
+    void hitLowestNonNegative()
+    {
+        Sphere s = new Sphere();
+        Intersection i1 = new Intersection(5, s);
+        Intersection i2 = new Intersection(7, s);
+        Intersection i3 = new Intersection(-3, s);
+        Intersection i4 = new Intersection(2, s);
+        Intersections xs = new Intersections(i1,i2,i3,i4);
+
+        assertEquals(i4,xs.hit());
+    }
+
 }

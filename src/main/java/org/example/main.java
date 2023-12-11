@@ -76,8 +76,9 @@ public class main {
 
         Canvas image = new Canvas(width, height);
         Sphere s = new Sphere();
-        Matrix transform = Matrix.scale(0,0,0);
-        s.setTransformation(transform);
+        Matrix transform = Matrix.scale(0.5,1,1);
+        Matrix rotate = Matrix.rotateZ(Math.PI/4);
+       // s.setTransformation(transform);
         Point origin = new Point(0,0,-10);
 
         for(int y = 0; y < height - 1; y++)
@@ -92,15 +93,15 @@ public class main {
                 Color c;
 
                 if (xs.getCount() == 0) {
-                    c = new Color("blue"); // Kugel nicht getroffen
+                    c = new Color("cyan"); // Kugel nicht getroffen
                 } else {
-                    c = new Color(1,0.64,0); // Kugel getroffen
+                    c = new Color(1,0.5,0); // Kugel getroffen
                 }
                 image.setPixel(x,y,c);
             }
         }
 
-        image.saveToFile("transformation2");
+        image.saveToFile("transformation8");
 
     }
 

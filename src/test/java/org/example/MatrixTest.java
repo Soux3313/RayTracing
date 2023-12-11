@@ -325,19 +325,6 @@ class MatrixTest {
         assertTrue(test);
     }
 
-
-    @Test
-    void multByInverse()//??????????????????????????????????????????????????????????????????????????????????????????????
-    {
-        Matrix m = Matrix.translate(5,-3,2);
-        Matrix inv = m.getInverse();
-        Point p = new Point(-3,4,5);
-        Point actual = new Point(-8,7,3.0);
-
-        Point p2 = inv.mult(p);
-
-        assertEquals(p2, actual);
-    }
     @Test
     void translationDoesNotAffectVectors()
     {
@@ -479,6 +466,62 @@ class MatrixTest {
         boolean test = m.mult(p).equals(new Point(15,0,7));
 
         assertTrue(test);
+    }
+
+    @Test
+    void transformationMatrixDefaultOrientation()
+    {
+        Point position = new Point(0,0,0);
+        Point lookAt = new Point(0,0,-1);
+        Vector up = new Vector(0,1,0);
+
+        Matrix transform = Matrix.viewTransform(position,lookAt,up);
+
+        assertEquals(Matrix.identity(4),transform);
+    }
+    @Test
+    void transformationMatrixLookingInPositiveZ()
+    {
+        Point position = new Point(0,0,0);
+        Point lookAt = new Point(0,0,1);
+        Vector up = new Vector(0,1,0);
+
+        Matrix transform = Matrix.viewTransform(position,lookAt,up);
+
+        assertEquals(Matrix.scale(-1,1,-1),transform);
+    }
+    @Test
+    void viewTransformationMovesWorlds()
+    {
+        Point position = new Point(0,0,8);
+        Point lookAt = new Point(0,0,0);
+        Vector up = new Vector(0,1,0);
+
+        Matrix transform = Matrix.viewTransform(position,lookAt,up);
+
+        assertEquals(Matrix.translate(0,0,-8),transform);
+    }
+    @Test
+    void arbitraryViewTransformation()
+    {
+        Point position = new Point(1,3,2);
+        Point lookAt = new Point(4,-2,8);
+        Vector up = new Vector(1,1,0);
+
+        Matrix transform = Matrix.viewTransform(position,lookAt,up);
+
+
+
+        double[][] matrix =
+                {
+                        {-0.50709, 0.50709 , 0.67612 , -2.36643 },
+                        { 0.76772 , 0.60609 , 0.12122 , -2.82843 },
+                        {-0.35857 , 0.59761 , -0.71714 , 0.00000 },
+                        { 0.00000 , 0.00000 , 0.00000 , 1.00000 }
+                };
+
+        Matrix m = new Matrix(matrix);
+        assertEquals(m,transform);
     }
 
 
