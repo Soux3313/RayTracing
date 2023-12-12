@@ -1,10 +1,11 @@
 package org.example;
 
+
 public class Point {
-    private double x;
-    private double y;
-    private double z;
-    private double w;
+    private final double x;
+    private final double y;
+    private final double z;
+    private final double w;
 
 
     public Point(double x, double y, double z)
@@ -87,7 +88,11 @@ public class Point {
         return new Point(x,y,z);
     }
 
-    public boolean equals(Point other) {
+
+    public boolean equals(Object obj) {
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Point other = (Point) obj;
 
         return Math.abs(this.x - other.x) < 0.00001 &&
                 Math.abs(this.y - other.y) < 0.00001 &&

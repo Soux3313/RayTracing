@@ -2,10 +2,10 @@ package org.example;
 
 public class Vector {
 
-    private double x;
-    private double y;
-    private double z;
-    private double w;
+    private final double x;
+    private final double y;
+    private final double z;
+    private final double w;
 
 
     public Vector(double x, double y, double z)
@@ -87,7 +87,11 @@ public class Vector {
         return new Vector(x,y,z);
     }
 
-    public boolean equals(Vector other) {
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Vector other = (Vector) obj;
 
         return Math.abs(this.x - other.x) < 0.00001 &&
                 Math.abs(this.y - other.y) < 0.00001 &&
