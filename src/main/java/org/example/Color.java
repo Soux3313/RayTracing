@@ -63,6 +63,11 @@ public class Color {
                 this.g = 0;
                 this.b = 1;
             }
+            case "orange" -> {
+                this.r = 1;
+                this.g = 0.64;
+                this.b = 0;
+            }
         }
 
     }

@@ -201,7 +201,7 @@ class MatrixTest {
     }
 
     @Test
-    void testVectorMultiplicationIdentiy()
+    void testVectorMultiplicationIdentity()
     {
         Vector v = new Vector(1,2,3);
         Matrix m = Matrix.identity(4);
@@ -237,7 +237,7 @@ class MatrixTest {
     }
 
     @Test
-    void testPointMultiplicationIdentiy()
+    void testPointMultiplicationIdentity()
     {
         Point p = new Point(1,2,3);
         Matrix m = Matrix.identity(4);

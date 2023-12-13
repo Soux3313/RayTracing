@@ -1,11 +1,10 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Scene {
-     private List<Shape> objects = new ArrayList<>();
+     private final List<Shape> objects = new ArrayList<>();
 
      public Scene(Shape... shapes)
      {
@@ -37,9 +36,8 @@ public class Scene {
 
      public boolean containsShape(Shape shape)
      {
-         for(int i = 0; i < objects.size(); i++)
-         {
-             if(objects.get(i).getClass() == shape.getClass()) return true;
+         for (Shape object : objects) {
+             if (object.getClass() == shape.getClass()) return true;
          }
          return false;
      }
@@ -57,9 +55,8 @@ public class Scene {
      public Intersections traceRay(Ray ray)
      {
          Intersections xs = new Intersections();
-         for(int i = 0; i < objects.size(); i++)
-         {
-             xs.addIntersections(objects.get(i).intersect(ray));
+         for (Shape object : objects) {
+             xs.addIntersections(object.intersect(ray));
          }
          return xs;
      }

@@ -65,8 +65,7 @@ public class main {
             }
         }
         image.saveToFile("test5");
-        */
-/*
+
         int width = 400;
         int height = 400;
         double wallZ = 10;

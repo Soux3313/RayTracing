@@ -17,7 +17,7 @@ public abstract class Shape {
     {
         Ray ray = worldRay.transform(this.transformation.getInverse());
         return localIntersect(ray);
-    };
+    }
     public abstract Intersections localIntersect(Ray localRay);
     public abstract Vector normalAt(Point point);
 }

@@ -74,18 +74,18 @@ public class Matrix {
 
     public String toString()
     {
-        String matrixString = "";
+        StringBuilder matrixString = new StringBuilder();
 
         for(int i = 0; i < matrix.length; i++)
         {
             for(int j = 0; j < matrix.length; j++)
             {
-                matrixString += matrix[i][j] + ", ";
+                matrixString.append(matrix[i][j]).append(", ");
             }
-            if(i < matrix.length - 1) matrixString += "\n";
+            if(i < matrix.length - 1) matrixString.append("\n");
         }
 
-        return matrixString;
+        return matrixString.toString();
     }
     @Override
     public boolean equals(Object obj)
@@ -118,7 +118,7 @@ public class Matrix {
     }
     public Matrix mult(Matrix m)
     {
-        if(this.matrix[0].length != m.getMatrix().length) return this; //check if this columns equals objects rows
+        if(this.matrix[0].length != m.getMatrix().length) return this; //check if these columns equals objects rows
 
         double[][] res = new double[matrix.length][m.getMatrix()[0].length];
 
@@ -239,25 +239,7 @@ public class Matrix {
     private Matrix submatrix(int row, int col)
     {
         double[][] submatrix = new double[matrix.length-1][matrix.length-1];
-/*
-        int subi = 0;
-        int subj = 0;
 
-        for(int i = 0; i < matrix.length; i++)
-        {
-            for(int j = 0; j < matrix.length; j++)
-            {
-                if(i != row && j != col)
-                {
-                    submatrix[subi][subj++] = matrix[i][j];
-
-                    if (subj == matrix.length - 1) {
-                        subj = 0;
-                        subi++;
-                    }
-                }
-            }
-        }*/
         int r = -1;
         for (int i = 0; i < matrix.length; i++) {
             if (i == row) continue;

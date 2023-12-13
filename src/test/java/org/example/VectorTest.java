@@ -180,7 +180,7 @@ And cross(vector2, vector1) = Vector(1, -2, 1)
         Vector v3 = new Vector(1,1,1);
         Vector v4 = new Vector(1,1,1);
 
-        assertFalse(v1.equals(v2));
-        assertTrue(v3.equals(v4));
+        assertNotEquals(v1, v2);
+        assertEquals(v3, v4);
     }
 }

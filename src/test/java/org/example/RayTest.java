@@ -54,8 +54,8 @@ class RayTest {
         Point actualP = r2.getOriginPoint();
         Vector actualV = r2.getVector();
 
-        assertTrue(expectedP.equals(actualP));
-        assertTrue(expectedV.equals(actualV));
+        assertEquals(expectedP, actualP);
+        assertEquals(expectedV, actualV);
     }
 
     @Test
@@ -70,7 +70,7 @@ class RayTest {
         Point actualP = r2.getOriginPoint();
         Vector actualV = r2.getVector();
 
-        assertTrue(expectedP.equals(actualP));
-        assertTrue(expectedV.equals(actualV));
+        assertEquals(expectedP, actualP);
+        assertEquals(expectedV, actualV);
     }
 }

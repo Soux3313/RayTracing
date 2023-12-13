@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Intersections {
 
-    private List<Intersection> intersections;
-    private int count = 0;
+    private final List<Intersection> intersections;
+    private int count;
 
     public Intersections(Intersection... intersection) {
 
@@ -64,9 +64,8 @@ public class Intersections {
 
     public Intersection hit()
     {
-        for(int i = 0; i < intersections.size(); i++)
-        {
-            if(intersections.get(i).t() > 0) return intersections.get(i);
+        for (Intersection intersection : intersections) {
+            if (intersection.t() > 0) return intersection;
         }
         return null;
     }
