@@ -139,7 +139,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IntersectionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CanvasTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -152,7 +152,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.IntersectionTest&quot;" />
+            <option value="&quot;org.example.CanvasTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -210,11 +210,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CanvasTest" />
         <item itemvalue="Application.main" />
         <item itemvalue="Gradle.CameraTest" />
         <item itemvalue="Gradle.MatrixTest" />
         <item itemvalue="Gradle.MatrixTest.multByInverse" />
-        <item itemvalue="Gradle.IntersectionTest" />
       </list>
     </recent_temporary>
   </component>

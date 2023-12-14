@@ -129,7 +129,7 @@ public class main {
         RayTracer rt = new RayTracer(scene, camera);
         rt.render();
         Canvas canvas = rt.getRenderTarget();
-        canvas.saveToFile("scene2");
+        canvas.saveToFile("scendfafaasasde2");
 
 
     }
