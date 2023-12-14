@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="optimized/cleaned up code">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/CalculatorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/CameraTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/CanvasTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/ColorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/IntersectionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/MatrixTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/PointAndVectorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/PointTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/RayTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/SceneTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/SphereTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/VectorTest.java" beforeDir="false" />
-    </list>
+    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="fixed my test bullshit back" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -258,7 +244,7 @@
       <workItem from="1699430743763" duration="9042000" />
       <workItem from="1701181342428" duration="10814000" />
       <workItem from="1702548647814" duration="532000" />
-      <workItem from="1702549194927" duration="625000" />
+      <workItem from="1702549194927" duration="780000" />
     </task>
     <task id="LOCAL-00001" summary="Math Library">
       <created>1697617376613</created>
@@ -365,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702455647724</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fixed my test bullshit back">
+      <created>1702549946783</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1702549946783</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +403,8 @@
     <MESSAGE value="optimized performance for matrix, added sphere/intersection" />
     <MESSAGE value="completed camera/scene, added raytracer" />
     <MESSAGE value="optimized/cleaned up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimized/cleaned up code" />
+    <MESSAGE value="fixed my test bullshit back" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed my test bullshit back" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
