@@ -183,4 +183,26 @@ And cross(vector2, vector1) = Vector(1, -2, 1)
         assertNotEquals(v1, v2);
         assertEquals(v3, v4);
     }
+
+    @Test
+    void reflect45()
+    {
+        Vector v1 = new Vector(1,-1,0);
+        Vector v2 = new Vector(0,1,0);
+        Vector reflect = v1.reflect(v2);
+        Vector expected = new Vector(1,1,0);
+
+        assertEquals(expected, reflect);
+    }
+
+    @Test
+    void reflectSlanted()
+    {
+        Vector v1 = new Vector(0,-1,0);
+        Vector v2 = new Vector(0.707011, 0.707011, 0);
+        Vector reflect = v1.reflect(v2);
+        Vector expected = new Vector(1,0,0);
+
+        assertEquals(expected, reflect);
+    }
 }

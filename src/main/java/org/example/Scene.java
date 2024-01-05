@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Scene {
      private final List<Shape> objects = new ArrayList<>();
+     private final List<LightSource> lights = new ArrayList<>();
 
      public Scene(Shape... shapes)
      {
          for (Shape shape : shapes) {
              addObject(shape);
          }
-
      }
 
      public void addObject(Shape shape)
@@ -19,7 +19,12 @@ public class Scene {
          objects.add(shape);
      }
 
-     public Shape get(int index)
+     public void addLight(LightSource light)
+     {
+         lights.add(light);
+     }
+
+     public Shape getObj(int index)
      {
          return objects.get(index);
      }
@@ -27,6 +32,16 @@ public class Scene {
      public List<Shape> getObjects()
      {
          return objects;
+     }
+
+     public LightSource getLit(int index)
+     {
+         return lights.get(index);
+     }
+
+     public List<LightSource> getLights()
+     {
+         return lights;
      }
 
      public int objectsAmount()

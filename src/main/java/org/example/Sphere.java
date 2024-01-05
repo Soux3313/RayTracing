@@ -59,7 +59,22 @@ public class Sphere extends Shape{
 
 
     @Override
-    public Vector normalAt(Point point) {
-        return point.sub(center);
+    public Vector normalAt(Point worldPoint) {
+        // Transformieren des worldPoint in das lokale Koordinatensystems
+        Point localPoint = getTransformation().getInverse().mult(worldPoint);
+        // Berechne die lokale Normale
+        Vector localNormal = localNormalAt(localPoint);
+        // Transformiere die lokale Normale in das Weltkoordinatensystem
+        Vector worldNormal = getTransformation().getInverse().transpose().mult(localNormal);
+
+        worldNormal.w = 0;
+
+        return worldNormal.norm();
     }
+
+    private Vector localNormalAt(Point localPoint)
+    {
+        return localPoint.sub(new Point(0,0,0));
+    }
+
 }

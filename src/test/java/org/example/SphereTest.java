@@ -168,6 +168,34 @@ class SphereTest {
         assertEquals(0,xs.getCount());
     }
 
+    @Test
+    void computeNormalOnTranslated()
+    {
+        Sphere s = new Sphere();
+        Matrix t = Matrix.translate(0,1,0);
+        s.setTransformation(t);
+        Point p = new Point(0,1.707106,-0.707106);
+
+        Vector n = s.normalAt(p);
+        Vector expected = new Vector(0,0.707106,-0.707106);
+
+        assertEquals(expected,n);
+    }
+
+    @Test
+    void computeNormalOnScaled()
+    {
+        Sphere s = new Sphere();
+        Matrix t = Matrix.scale(1,0.5,1).mult(Matrix.rotateZ(0.62831));
+        s.setTransformation(t);
+        Point p = new Point(0,0.70711,-0.70711);
+
+        Vector n = s.normalAt(p);
+        Vector expected = new Vector(0,0.970142,-0.242536);
+
+        assertEquals(expected,n);
+    }
+
 
 }
 

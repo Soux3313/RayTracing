@@ -5,7 +5,7 @@ public class Vector {
     private final double x;
     private final double y;
     private final double z;
-    private final double w;
+    public double w;
 
 
     public Vector(double x, double y, double z)
@@ -93,7 +93,7 @@ public class Vector {
         if (obj == null || getClass() != obj.getClass()) return false;
         Vector other = (Vector) obj;
 
-        return Math.abs(this.x - other.x) < 0.00001 &&
+        return Math.abs(this.x - other.x) < 0.000001 &&
                 Math.abs(this.y - other.y) < 0.00001 &&
                 Math.abs(this.z - other.z) < 0.00001 &&
                 Math.abs(this.w - other.w) < 0.00001;
@@ -137,4 +137,12 @@ public class Vector {
         return ("V("+this.getX()+","+this.getY()+","+this.getZ()+")");
     }
 
+    public Vector reflect(Vector n)
+    {
+        Vector e = this;
+        double en = e.dot(n);
+        Vector right = n.mult(en*2);
+
+        return e.sub(right);
+    }
 }

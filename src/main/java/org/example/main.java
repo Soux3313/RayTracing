@@ -118,7 +118,10 @@ public class main {
         sph4.setCenter(new Point(2,2,2));
 
         Scene scene = new Scene(sph1, sph2, sph3, sph4);
-        //scene.addObject();
+
+        PointLightSource ls = new PointLightSource(new Color(1,1,1), 1, new Point(-10,10,-10));
+        scene.addLight(ls);
+
         int width = 800;
         int height = 400;
         double fov = 60;
