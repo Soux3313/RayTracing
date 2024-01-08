@@ -21,9 +21,17 @@ public class RayTracer {
         for (int y = 0; y < cam.getHeight(); y++) {
             for (int x = 0; x < cam.getWidth(); x++) {
                 Ray ray = cam.generateRay(x, y);
-                Intersections intersections = scene.traceRay(ray);
-                if(intersections.hit() != null) renderTarget.setPixel(x, y, new Color("cyan"));
-                else renderTarget.setPixel(x, y, new Color("blue"));
+                Intersection hit = scene.traceRay(ray).hit();
+                if(hit == null) renderTarget.setPixel(x, y, new Color("cyan"));
+                else
+                {
+                    Material mat = hit.shape().getMaterial();
+                    Point point = ray.pointAt(hit.t());
+                    Vector spectator = ray.getVector().negative();
+                    Vector normal = hit.shape().normalAt(point);
+                    Color shine = mat.phongLighting(scene.getLit(0),point,spectator,normal);
+                    renderTarget.setPixel(x, y, shine);
+                }
             }
         }
     }

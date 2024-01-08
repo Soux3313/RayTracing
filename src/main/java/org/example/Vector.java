@@ -78,7 +78,9 @@ public class Vector {
 
     public Vector div(double scale)
     {
-        if(scale == 0) return this;
+        if (scale == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
 
         double x = this.getX() / scale;
         double y = this.getY() / scale;
@@ -94,9 +96,9 @@ public class Vector {
         Vector other = (Vector) obj;
 
         return Math.abs(this.x - other.x) < 0.000001 &&
-                Math.abs(this.y - other.y) < 0.00001 &&
-                Math.abs(this.z - other.z) < 0.00001 &&
-                Math.abs(this.w - other.w) < 0.00001;
+                Math.abs(this.y - other.y) < 0.000001 &&
+                Math.abs(this.z - other.z) < 0.000001 &&
+                Math.abs(this.w - other.w) < 0.000001;
     }
 
     public double magnitude()//√(x² + y² + z²)

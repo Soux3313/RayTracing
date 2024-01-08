@@ -69,7 +69,9 @@ public class Point {
 
     public Point div(double scale)
     {
-        if(scale == 0) return this;
+        if (scale == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
 
         double x = this.getX() / scale;
         double y = this.getY() / scale;

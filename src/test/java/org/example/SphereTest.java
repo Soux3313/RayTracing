@@ -196,6 +196,26 @@ class SphereTest {
         assertEquals(expected,n);
     }
 
+    @Test
+    void defaultMaterial()
+    {
+        Sphere s = new Sphere();
+        Material m = new Material();
+
+        assertEquals(m, s.getMaterial());
+    }
+
+    @Test
+    void assignedMaterial()
+    {
+        Sphere s = new Sphere();
+        Material m = new Material();
+        m.setAmbient(1.0);
+        s.setMaterial(m);
+
+        assertEquals(m, s.getMaterial());
+    }
+
 
 }
 

@@ -62,11 +62,15 @@ public class Intersections {
         intersections.set(j, temp);
     }
 
-    public Intersection hit()
-    {
+    public Intersection hit() {
+        Intersection closestIntersection = null;
+
         for (Intersection intersection : intersections) {
-            if (intersection.t() > 0) return intersection;
+            if (intersection.t() > 0 && (closestIntersection == null || intersection.t() < closestIntersection.t())) {
+                closestIntersection = intersection;
+            }
         }
-        return null;
+
+        return closestIntersection;
     }
 }

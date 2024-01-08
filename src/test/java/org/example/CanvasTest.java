@@ -46,7 +46,5 @@ class CanvasTest {
         File imageFile = new File("test_image");
 
         assertTrue(imageFile.exists());
-
-        imageFile.delete();
     }
 }

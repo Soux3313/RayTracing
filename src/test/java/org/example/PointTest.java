@@ -11,12 +11,11 @@ class PointTest {
         Point p = new Point(0.1,0.2,0.3);
         double scale = -1.5;
 
-        double[] expected = {-0.15, -0.3, -0.45};
-        Point actualPoint = p.mult(scale);
-        double[] actual = {actualPoint.getX(), actualPoint.getY(), actualPoint.getZ()};
+        Point expected = new Point(-0.15, -0.3, -0.45);
+        Point actual = p.mult(scale);
 
 
-        assertArrayEquals(expected,actual);
+        assertEquals(expected,actual);
     }
 
     @Test

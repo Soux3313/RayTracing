@@ -8,9 +8,9 @@ public class Color {
 
     public Color(double r, double g, double b)
     {
-        this.r = limit(r);
-        this.g = limit(g);
-        this.b = limit(b);
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
 
     public Color()
@@ -72,6 +72,22 @@ public class Color {
 
     }
 
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Color other = (Color) obj;
+
+        return  Math.abs(this.getB() - other.getB()) < 0.000001 &&
+                Math.abs(this.getG() - other.getG()) < 0.00001 &&
+                Math.abs( this.getR() - other.getR()) < 0.00001;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Color: R="+r+" G="+g+" B="+b;
+    }
     public double getB() {
         return b;
     }
@@ -100,11 +116,8 @@ public class Color {
     public Color add(Color c)
     {
         double red = r +c.r;
-        red = limit(red);
         double green = g + c.g;
-        green = limit(green);
         double blue = b + c.b;
-        blue = limit(blue);
 
         return new Color(red,green,blue);
     }
@@ -112,11 +125,8 @@ public class Color {
     public Color multiply(double scale)
     {
         double red = r * scale;
-        red = limit(red);
         double green = g * scale;
-        green = limit(green);
         double blue = b * scale;
-        blue = limit(blue);
 
         return new Color(red,green,blue);
     }
@@ -124,20 +134,17 @@ public class Color {
     public Color multiply(Color c)
     {
         double red = r * c.r;
-        red = limit(red);
         double green = g * c.g;
-        green = limit(green);
         double blue = b * c.b;
-        blue = limit(blue);
 
         return new Color(red,green,blue);
     }
 
     // Convert the color to an integer format for BufferedImage (TYPE_INT_RGB)
     public int toImageColor() {
-        int red = (int) (r * 255);
-        int green = (int) (g * 255);
-        int blue = (int) (b * 255);
+        int red = (int) (limit(r) * 255);
+        int green = (int) (limit(g) * 255);
+        int blue = (int) (limit(b) * 255);
         int redValue = (red & 0xFF) << 16;
         int greenValue = (green & 0xFF) << 8;
         int blueValue = blue & 0xFF;

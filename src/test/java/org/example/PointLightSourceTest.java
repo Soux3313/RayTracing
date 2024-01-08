@@ -10,7 +10,7 @@ class PointLightSourceTest {
     void construct() {
         Color c = new Color(1,1,1);
         Point p = new Point(0,0,0);
-        PointLightSource ls = new PointLightSource(c,p);
+        PointLightSource ls = new PointLightSource(p,c);
 
         assertEquals(p,ls.getPosition());
         assertEquals(c,ls.getColor());
