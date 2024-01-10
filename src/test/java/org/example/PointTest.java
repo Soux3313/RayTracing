@@ -35,11 +35,9 @@ class PointTest {
     void illegalDivision()
     {
         Point p = new Point(0.1,0.2,0.3);
-        double[] expected = {0.1, 0.2, 0.3};
-        Point actualPoint = p.div(0);
-        double[] actual = {actualPoint.getX(), actualPoint.getY(), actualPoint.getZ()};
 
-        assertArrayEquals(expected, actual);
+        assertThrows(ArithmeticException.class, ()->p.div(0));
+
     }
 
     @Test

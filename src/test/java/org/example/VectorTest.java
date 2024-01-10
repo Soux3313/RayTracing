@@ -72,12 +72,9 @@ Then vector1 + vector2 = Vector(1.0, 1.0, 6.0)*/
     @Test
     void illegalDivisionByZero(){
         Vector v = new Vector(0.1,0.2,0.3);
-        Vector actualVector = v.div(0);
 
-        double[] expected = {0.1,0.2,0.3};
-        double[] actual = {actualVector.getX(), actualVector.getY(), actualVector.getZ()};
+        assertThrows(ArithmeticException.class, ()->v.div(0));
 
-        assertArrayEquals(expected, actual);
     }
 
     @Test

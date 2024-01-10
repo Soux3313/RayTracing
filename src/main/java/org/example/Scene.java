@@ -82,4 +82,34 @@ public class Scene {
          }
          return xs;
      }
+
+     public Color shadeHit(HitInfo info)
+     {
+         return info.shape().getMaterial().phongLighting(lights.get(0),info.position(),info.eye(),info.normal());
+     }
+
+     public boolean isShadowed(Point position)
+     {
+         LightSource ls = getLit(0);
+         Point lsPosition = ls.getPosition();
+
+         //Vector zwischen LightSource und Punkt
+         Vector v = lsPosition.sub(position);
+
+         //Länge des Vektors
+         double distance = v.magnitude();
+
+         //Strahl von Punkt nach Lichtquelle
+         Ray ray = new Ray(position, v.norm());
+
+         //Schnittpunkte in Szene
+         Intersections xs = traceRay(ray);
+
+         for(int i = 0; i < xs.getCount(); i++)
+         {
+             if(xs.get(i).t() < distance) return true;
+         }
+
+         return false;
+     }
 }

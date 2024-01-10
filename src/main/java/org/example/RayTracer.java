@@ -25,12 +25,9 @@ public class RayTracer {
                 if(hit == null) renderTarget.setPixel(x, y, new Color("cyan"));
                 else
                 {
-                    Material mat = hit.shape().getMaterial();
-                    Point point = ray.pointAt(hit.t());
-                    Vector spectator = ray.getVector().negative();
-                    Vector normal = hit.shape().normalAt(point);
-                    Color shine = mat.phongLighting(scene.getLit(0),point,spectator,normal);
-                    renderTarget.setPixel(x, y, shine);
+                    HitInfo hitInfo = hit.prepareHitInfo(ray);
+                    Color color = scene.shadeHit(hitInfo);
+                    renderTarget.setPixel(x, y, color);
                 }
             }
         }

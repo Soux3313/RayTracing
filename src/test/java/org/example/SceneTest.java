@@ -74,4 +74,37 @@ class SceneTest {
         assertTrue(s.containsShape(sphere) && s.containsShape(smallSphere));
     }
 
+    @Test
+    void noShadowNoCollinear()
+    {
+        Scene s = Scene.defaultScene();
+        Point p = new Point(0,10,0);
+
+        assertFalse(s.isShadowed(p));
+    }
+
+    @Test
+    void shadowObjectBetweenPointLight()
+    {
+        Scene s = Scene.defaultScene();
+        Point p = new Point(10,-10,10);
+
+        assertTrue(s.isShadowed(p));
+    }
+    @Test
+    void noShadowObjectBehindLight()
+    {
+        Scene s = Scene.defaultScene();
+        Point p = new Point(-20,20,-20);
+
+        assertFalse(s.isShadowed(p));
+    }
+    @Test
+    void noShadowObjectBehindPoint()
+    {
+        Scene s = Scene.defaultScene();
+        Point p = new Point(-2,2,-2);
+
+        assertFalse(s.isShadowed(p));
+    }
 }

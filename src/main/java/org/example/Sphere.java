@@ -46,15 +46,18 @@ public class Sphere extends Shape{
 
         // Berechnung der Schnittpunkte
         double sqrtDiscriminant = Math.sqrt(discriminant);
-        double t1 = (-b - sqrtDiscriminant) / (2.0 * a);
-        double t2 = (-b + sqrtDiscriminant) / (2.0 * a);
+        double t1 = (-b - sqrtDiscriminant) / (2 * a);
+        double t2 = (-b + sqrtDiscriminant) / (2 * a);
 
         // Hinzufügen der Schnittpunkte zur Liste
         intersectionsList.add(new Intersection(t1, this));
         intersectionsList.add(new Intersection(t2, this));
 
+        Intersections xs = new Intersections(intersectionsList.get(0), intersectionsList.get(1));
 
-        return new Intersections(intersectionsList.get(0), intersectionsList.get(1));
+        xs.sort();
+
+        return xs;
     }
 
 

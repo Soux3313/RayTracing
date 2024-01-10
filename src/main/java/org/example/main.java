@@ -114,10 +114,12 @@ public class main {
         Sphere sph2 = new Sphere();
         sph2.setRadius(0.5);
         sph2.setCenter(new Point(1.5,0.5,-0.5));
+        //sph2.setMaterial(mat);
 
         Sphere sph3 = new Sphere();
         sph3.setRadius(0.33);
         sph3.setCenter(new Point(-1.5,0.33,-0.75));
+        //sph3.setMaterial(mat);
 
         LightSource ls = new PointLightSource(new Point(-10,10,-10), new Color("white"),1);
         Scene scene = new Scene(sph1, sph2, sph3);

@@ -41,7 +41,7 @@ public class Intersections {
         return count;
     }
 
-    private void sort() {
+    public void sort() {
         int length = intersections.size();
         boolean swapped;
 
@@ -70,7 +70,7 @@ public class Intersections {
                 closestIntersection = intersection;
             }
         }
-
+        sort();
         return closestIntersection;
     }
 }

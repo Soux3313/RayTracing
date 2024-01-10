@@ -83,21 +83,18 @@ public class Material {
 
         //Werte für die Formel
         Color O = color;
-        LightSource IL = lightSource;
-        Color ILC = IL.getColor().multiply(IL.getIntensity());
+        Color ILC = lightSource.getColor().multiply(lightSource.getIntensity());
 
-        Vector n = normal;
-        Vector l = IL.getPosition().sub(surface).norm();
-        Vector r = l.negative().reflect(n);
-        Vector v = spectator;
+        Vector l = lightSource.getPosition().sub(surface).norm();
+        Vector r = l.negative().reflect(normal);
 
         double ka = ambient;
         double kd = diffuse;
         double ks = specular;
         double kn = shininess;
 
-        double nl = n.dot(l);
-        double vr = r.dot(v);
+        double nl = normal.dot(l);
+        double vr = r.dot(spectator);
 
         //ambient
         Color ambient = O.multiply(ka);
@@ -110,15 +107,14 @@ public class Material {
         //specular
         double specularFactor = Math.pow(vr, kn);
        // Color specular = ILC.multiply(ks * specularFactor);
-        Color specular = new Color(0, 0, 0);
+        Color specular = new Color("black");
         if (vr > 0) {
             specular = ILC.multiply(ks).multiply(specularFactor);
         }
 
         //final
-        Color I = ambient.add(diffuse).add(specular);
 
-        return I;
+        return ambient.add(diffuse).add(specular);
 
     }
 }
