@@ -118,7 +118,7 @@ public class Matrix {
     }
     public Matrix mult(Matrix m)
     {
-        if(this.matrix[0].length != m.getMatrix().length) return this; //check if these columns equals objects rows
+        if(this.matrix[0].length != m.getMatrix().length) throw new IllegalArgumentException("Matrizen haben unterschiedliche Größen"); //check if these columns equals objects rows
 
         double[][] res = new double[matrix.length][m.getMatrix()[0].length];
 
@@ -137,7 +137,7 @@ public class Matrix {
 
     public Vector mult(Vector v)
     {
-        if(this.matrix.length != 4) return v;
+        if(this.matrix.length != 4) throw new IllegalArgumentException(); //c
 
         double x = 0;
         double y = 0;

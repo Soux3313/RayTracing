@@ -60,9 +60,9 @@ public class Vector {
 
     public Vector negative()
     {
-        double x = this.getX() * -1;
-        double y = this.getY() * -1;
-        double z = this.getZ() * -1;
+        double x = -this.getX();
+        double y = -this.getY();
+        double z = -this.getZ();
 
         return new Vector(x,y,z);
     }

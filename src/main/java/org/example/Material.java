@@ -77,7 +77,7 @@ public class Material {
         this.shininess = shininess;
     }
 
-    public Color phongLighting(LightSource lightSource, Point surface, Vector spectator, Vector normal)
+    public Color phongLighting(LightSource lightSource, Point surface, Vector spectator, Vector normal, boolean inShadow)
     {
         //I = kaO + ILOkd(n⋅l) + ILks(v⋅r)^kn
 

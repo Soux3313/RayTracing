@@ -27,6 +27,7 @@ public class RayTracer {
                 {
                     HitInfo hitInfo = hit.prepareHitInfo(ray);
                     Color color = scene.shadeHit(hitInfo);
+
                     renderTarget.setPixel(x, y, color);
                 }
             }

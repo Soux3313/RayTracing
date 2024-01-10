@@ -80,12 +80,14 @@ public class Scene {
          for (Shape object : objects) {
              xs.addIntersections(object.intersect(ray));
          }
+         xs.sort();
          return xs;
      }
 
      public Color shadeHit(HitInfo info)
      {
-         return info.shape().getMaterial().phongLighting(lights.get(0),info.position(),info.eye(),info.normal());
+         boolean isShadowed = isShadowed(info.position());
+         return info.shape().getMaterial().phongLighting(lights.get(0),info.position(),info.eye(),info.normal(), isShadowed);
      }
 
      public boolean isShadowed(Point position)
