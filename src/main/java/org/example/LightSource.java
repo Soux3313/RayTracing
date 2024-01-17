@@ -1,27 +1,29 @@
 package org.example;
 
-public class LightSource {
+public abstract class LightSource {
     private final Color color;
     private final double intensity;
-    private final Point position;
 
-    public LightSource(Point position, Color color, double intensity)
+
+    public LightSource(Color color, double intensity)
     {
-        this.position = position;
         this.color = color;
         this.intensity = intensity;
     }
 
-    public LightSource(Point position, Color color)
+    public LightSource( Color color)
     {
-        this.position = position;
         this.color = color;
         this.intensity = 1;
     }
 
-    public Point getPosition() {
-        return position;
+    public LightSource()
+    {
+        this.color = new Color("white");
+        this.intensity = 1;
     }
+
+
     public Color getColor() {
         return color;
     }
@@ -29,16 +31,17 @@ public class LightSource {
     public double getIntensity() {
         return intensity;
     }
-    @Override
-    public boolean equals(Object obj) {
 
-        if (obj == null || getClass() != obj.getClass()) return false;
-        LightSource other = (LightSource) obj;
 
-        return  this.getColor().equals(other.getColor()) &&
-                Math.abs(this.getIntensity() - other.getIntensity()) < 0.00001 &&
-                this.getPosition().equals(other.getPosition());
-    }
+    public abstract boolean isDirectional();
+
+    public abstract Vector directionFromPoint(Point p);
+
+    public abstract Vector directionToPoint(Point p);
+
+    public abstract Color colorAtPoint(Point p);
+    public abstract double distanceFromPoint(Point p);
+
 
 }
 

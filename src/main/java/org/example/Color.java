@@ -8,9 +8,9 @@ public class Color {
 
     public Color(double r, double g, double b)
     {
-        this.r = limit(r);
-        this.g = limit(g);
-        this.b = limit(b);
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
 
     public Color()

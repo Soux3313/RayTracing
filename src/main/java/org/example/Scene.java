@@ -86,17 +86,26 @@ public class Scene {
 
      public Color shadeHit(HitInfo info)
      {
-         boolean isShadowed = isShadowed(info.position());
-         return info.shape().getMaterial().phongLighting(lights.get(0),info.position(),info.eye(),info.normal(), isShadowed);
+         Point adjusted = info.position().add(info.normal().mult(0.0000001));
+         Color finalColor = new Color("black");
+         for (LightSource light: lights) {
+             boolean isShadowed = isShadowed(adjusted, light);
+             finalColor = finalColor.add(
+                     info.shape().getMaterial().phongLighting(
+                             light,
+                             info.position(),
+                             info.eye(),
+                             info.normal(),
+                             isShadowed));
+         }
+         return finalColor;
      }
 
-     public boolean isShadowed(Point position)
+     public boolean isShadowed(Point position, LightSource ls)
      {
-         LightSource ls = getLit(0);
-         Point lsPosition = ls.getPosition();
 
          //Vector zwischen LightSource und Punkt
-         Vector v = lsPosition.sub(position);
+         Vector v = ls.directionFromPoint(position);
 
          //Länge des Vektors
          double distance = v.magnitude();
@@ -106,12 +115,30 @@ public class Scene {
 
          //Schnittpunkte in Szene
          Intersections xs = traceRay(ray);
+         Intersection hit = xs.hit();
 
-         for(int i = 0; i < xs.getCount(); i++)
-         {
-             if(xs.get(i).t() < distance) return true;
-         }
+         if(hit==null) return false;
 
-         return false;
+         return hit.t() < distance;
      }
+
+    public Color colorAt(Ray ray) {
+        Intersections intersections = traceRay(ray);
+        Intersection hit = intersections.hit();
+        if (hit == null) return new Color("black");
+        HitInfo hitInfo = hit.prepareHitInfo(ray);
+        return shadeHit(hitInfo);
+    }
+
+    public Color reflectedColor(HitInfo hitInfo)
+    {
+        if(hitInfo.shape().getMaterial().getReflexion() == 0) return new Color("black");
+
+        Ray ray = new Ray(hitInfo.position().add(hitInfo.normal()), hitInfo.reflect());
+
+        Color color = colorAt(ray);
+
+        return color.multiply(hitInfo.shape().getMaterial().getReflexion());
+    }
+
 }

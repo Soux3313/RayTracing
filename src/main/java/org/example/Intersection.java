@@ -6,7 +6,8 @@ public record Intersection(double t, Shape shape) {
            Point position = ray.pointAt(t);
            Vector eye = ray.getVector().negative();
            Vector normal = shape.normalAt(position);
+           Vector reflect = ray.getVector().reflect(normal);
 
-           return new HitInfo(shape,t,position,eye,normal);
+           return new HitInfo(shape,t,position,eye,normal,reflect);
     }
 }

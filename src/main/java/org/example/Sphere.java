@@ -5,21 +5,13 @@ import java.util.List;
 
 public class Sphere extends Shape{
 
-    private Point center;
-    private double radius;
+    private final Point center;
+    private final double radius;
 
     public Sphere()
     {
         this.center = new Point(0,0,0);
         this.radius = 1;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
-    public void setCenter(Point center) {
-        this.center = center;
     }
 
     @Override

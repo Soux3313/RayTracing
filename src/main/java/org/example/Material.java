@@ -6,6 +6,7 @@ public class Material {
     private double diffuse;
     private double specular;
     private double shininess;
+    private double reflexion;
 
     public Material(Color color, double ambient, double diffuse, double specular, double shininess) {
         this.color = color;
@@ -13,6 +14,15 @@ public class Material {
         this.diffuse = diffuse;
         this.specular = specular;
         this.shininess = shininess;
+        this.reflexion = 0;
+    }
+    public Material(Color color, double ambient, double diffuse, double specular, double shininess, double reflexion) {
+        this.color = color;
+        this.ambient = ambient;
+        this.diffuse = diffuse;
+        this.specular = specular;
+        this.shininess = shininess;
+        this.reflexion = reflexion;
     }
 
     public Material()
@@ -22,6 +32,7 @@ public class Material {
         this.diffuse = 0.9;
         this.specular = 0.9;
         this.shininess = 200;
+        this.reflexion = 0;
     }
 
     @Override
@@ -77,15 +88,23 @@ public class Material {
         this.shininess = shininess;
     }
 
+    public void setReflexion(double reflexion) {
+        this.reflexion = reflexion;
+    }
+
+    public double getReflexion() {
+        return reflexion;
+    }
+
     public Color phongLighting(LightSource lightSource, Point surface, Vector spectator, Vector normal, boolean inShadow)
     {
         //I = kaO + ILOkd(n⋅l) + ILks(v⋅r)^kn
 
         //Werte für die Formel
         Color O = color;
-        Color ILC = lightSource.getColor().multiply(lightSource.getIntensity());
+        Color ILC = lightSource.colorAtPoint(surface);
 
-        Vector l = lightSource.getPosition().sub(surface).norm();
+        Vector l = lightSource.directionFromPoint(surface);
         Vector r = l.negative().reflect(normal);
 
         double ka = ambient;
@@ -113,6 +132,7 @@ public class Material {
         }
 
         //final
+        if(inShadow) return ambient;
 
         return ambient.add(diffuse).add(specular);
 
