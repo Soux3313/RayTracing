@@ -6,22 +6,27 @@ import java.util.List;
 public class Scene {
      private final List<Shape> objects = new ArrayList<>();
      private final List<LightSource> lights = new ArrayList<>();
+     private Sampler sampler;
 
      public Scene(Shape... shapes)
      {
          for (Shape shape : shapes) {
              addObject(shape);
          }
+         this.sampler = new NoSampler();
      }
 
-     public void addObject(Shape shape)
+    public Sampler getSampler() {
+        return sampler;
+    }
+
+    public void setSampler(Sampler sampler) {
+        this.sampler = sampler;
+    }
+
+    public void addObject(Shape shape)
      {
          objects.add(shape);
-     }
-
-     public void addLight(LightSource light)
-     {
-         lights.add(light);
      }
 
      public Shape getObj(int index)
@@ -33,7 +38,14 @@ public class Scene {
      {
          return objects;
      }
-
+    public int objectsAmount()
+    {
+        return objects.size();
+    }
+    public void addLight(LightSource light)
+    {
+        lights.add(light);
+    }
      public LightSource getLit(int index)
      {
          return lights.get(index);
@@ -42,11 +54,6 @@ public class Scene {
      public List<LightSource> getLights()
      {
          return lights;
-     }
-
-     public int objectsAmount()
-     {
-         return objects.size();
      }
 
      public boolean containsShape(Shape shape)
@@ -84,10 +91,11 @@ public class Scene {
          return xs;
      }
 
-     public Color shadeHit(HitInfo info)
+     public Color shadeHit(HitInfo info, int depth)
      {
          Point adjusted = info.position().add(info.normal().mult(0.0000001));
          Color finalColor = new Color("black");
+         Color reflect = reflectedColor(info, depth);
          for (LightSource light: lights) {
              boolean isShadowed = isShadowed(adjusted, light);
              finalColor = finalColor.add(
@@ -98,7 +106,7 @@ public class Scene {
                              info.normal(),
                              isShadowed));
          }
-         return finalColor;
+         return finalColor.add(reflect);
      }
 
      public boolean isShadowed(Point position, LightSource ls)
@@ -122,21 +130,23 @@ public class Scene {
          return hit.t() < distance;
      }
 
-    public Color colorAt(Ray ray) {
+    public Color colorAt(Ray ray, int depth) {
         Intersections intersections = traceRay(ray);
         Intersection hit = intersections.hit();
         if (hit == null) return new Color("black");
         HitInfo hitInfo = hit.prepareHitInfo(ray);
-        return shadeHit(hitInfo);
+        return shadeHit(hitInfo, depth);
     }
 
-    public Color reflectedColor(HitInfo hitInfo)
+    public Color reflectedColor(HitInfo hitInfo, int depth)
     {
+        if(depth <= 0) return new Color("black");
+
         if(hitInfo.shape().getMaterial().getReflexion() == 0) return new Color("black");
 
-        Ray ray = new Ray(hitInfo.position().add(hitInfo.normal()), hitInfo.reflect());
+        Ray ray = new Ray(hitInfo.position().add(hitInfo.normal().mult(0.0001)), hitInfo.reflect());
 
-        Color color = colorAt(ray);
+        Color color = colorAt(ray, depth-1);
 
         return color.multiply(hitInfo.shape().getMaterial().getReflexion());
     }

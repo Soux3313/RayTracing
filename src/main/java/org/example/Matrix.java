@@ -262,7 +262,8 @@ public class Matrix {
     }
 
     public final boolean isInvertible() {
-        return determinant() != 0;
+        double det = this.determinant();
+        return Math.abs(det) > 1e-9;
     }
 
     public Matrix adj()
@@ -283,7 +284,7 @@ public class Matrix {
 
     private Matrix invert()
     {
-        if (! isInvertible()) {
+        if (!isInvertible()) {
             throw new RuntimeException("This matrix cannot be inverted");
         }
         Matrix adj = this.adj();

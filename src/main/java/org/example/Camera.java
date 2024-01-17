@@ -93,9 +93,8 @@ public class Camera {
         return (2*halfWidth) / width;
     }
 
-    public Ray generateRay(int x, int y)
+    public Ray generateRay(double x, double y)
     {
-
         double xOffset = (x + 0.5) * getPixelSize();
         double yOffset = (y + 0.5) * getPixelSize();
 

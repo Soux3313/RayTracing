@@ -121,6 +121,7 @@ public class Material {
         //diffuse
         //Color diffuse = ILC.multiply(O).multiply(kd * nl);
         Color diffuse = ILC.multiply(O).multiply(kd).multiply(Math.max(nl, 0));
+        //Color diffuse = ILC.multiply(kd).multiply(Math.max(nl, 0));
 
 
         //specular
@@ -133,7 +134,6 @@ public class Material {
 
         //final
         if(inShadow) return ambient;
-
         return ambient.add(diffuse).add(specular);
 
     }
