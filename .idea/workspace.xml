@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="fixed my test bullshit back">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/NoSampler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/OffsetSampler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/RandomSampler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Sampler.java" afterDir="false" />
+    <list default="true" id="677ad74e-e160-40bb-9b7a-65d8932b6c66" name="Changes" comment="finished Reflexion (10)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Cube.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Plane.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/TestShape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/PlaneTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/ShapeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Matrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RayTracer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/IntersectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/IntersectionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,29 +128,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LightSourceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.example.LightSourceTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="MaterialTest.constructReflexion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -173,7 +151,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PointLightSourceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="PlaneTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -186,7 +164,30 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.PointLightSourceTest&quot;" />
+            <option value="&quot;org.example.PlaneTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ShapeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.example.ShapeTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -221,11 +222,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PlaneTest" />
+        <item itemvalue="Gradle.ShapeTest" />
         <item itemvalue="Gradle.MaterialTest.constructReflexion" />
         <item itemvalue="Application.main" />
         <item itemvalue="Gradle.Tests in 'org.example'" />
-        <item itemvalue="Gradle.LightSourceTest" />
-        <item itemvalue="Gradle.PointLightSourceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -258,7 +259,8 @@
       <workItem from="1704571079992" duration="15219000" />
       <workItem from="1704725613129" duration="10045000" />
       <workItem from="1705396320361" duration="7592000" />
-      <workItem from="1705524097130" duration="1595000" />
+      <workItem from="1705524097130" duration="1886000" />
+      <workItem from="1705682783613" duration="6095000" />
     </task>
     <task id="LOCAL-00001" summary="Math Library">
       <created>1697617376613</created>
@@ -358,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704484216575</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="finished Reflexion (10)">
+      <created>1705525977350</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1705525977350</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,7 +411,8 @@
     <MESSAGE value="completed matrix, inversion doesnt work fully for some reason" />
     <MESSAGE value="optimized performance for matrix, added sphere/intersection" />
     <MESSAGE value="new stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="new stuff" />
+    <MESSAGE value="finished Reflexion (10)" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished Reflexion (10)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

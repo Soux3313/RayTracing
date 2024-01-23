@@ -66,11 +66,11 @@ public class Scene {
 
      public static Scene defaultScene()
      {
-         Sphere sphere = new Sphere();
+         Shape sphere = new Sphere();
          Material m = new Material();
          Material m1 = new Material(new Color(0.8,1.0,0.6), m.getAmbient(), 0.7, 0.2, m.getShininess());
          sphere.setMaterial(m1);
-         Sphere smallSphere = new Sphere();
+         Shape smallSphere = new Sphere();
          Matrix transform = Matrix.scale(0.5,0.5,0.5);
          smallSphere.setTransformation(transform);
 

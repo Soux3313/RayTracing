@@ -2,9 +2,14 @@ package org.example;
 
 public abstract class Shape {
 
-    private Matrix transformation = Matrix.identity(4);
-    private Material material = new Material();
 
+    private Matrix transformation;
+    private Material material;
+
+    public Shape() {
+        this.transformation = Matrix.identity(4); // Initialisiere mit Einheitsmatrix
+        this.material = new Material(); // Standardmaterial zuweisen
+    }
     public Matrix getTransformation() {
         return transformation;
     }
@@ -28,5 +33,18 @@ public abstract class Shape {
         return localIntersect(ray);
     }
     public abstract Intersections localIntersect(Ray localRay);
-    public abstract Vector normalAt(Point point);
+    public Vector normalAt(Point point)
+    {
+        // Transformieren des worldPoint in das lokale Koordinatensystems
+        Point localPoint = this.getTransformation().getInverse().mult(point);
+        // Berechne die lokale Normale
+        Vector localNormal = localNormalAt(localPoint);
+        // Transformiere die lokale Normale in das Weltkoordinatensystem
+        Vector worldNormal = getTransformation().getInverse().transpose().mult(localNormal);
+
+        worldNormal.w = 0;
+
+        return worldNormal.norm();
+    }
+    public abstract Vector localNormalAt(Point point);
 }

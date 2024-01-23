@@ -8,7 +8,7 @@ class IntersectionTest {
 
     @Test
     void testEncapsule() {
-        Sphere sphere = new Sphere();
+        Shape sphere = new Sphere();
         Intersection i1 = new Intersection(3.5,sphere);
 
         assertEquals(i1.t(), 3.5);

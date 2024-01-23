@@ -134,6 +134,7 @@ public class Material {
 
         //final
         if(inShadow) return ambient;
+
         return ambient.add(diffuse).add(specular);
 
     }
